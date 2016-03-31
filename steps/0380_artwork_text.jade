@@ -1,0 +1,40 @@
+//- If an <artwork> element does not have type=’svg’ or type=’binary-art’ and
+//- there is a “src” attribute, the data needs to be moved into the content of
+//- the <artwork> element. Note that this step assumes that all of the preferred
+//- types other than “binary-art” are text, which is possibly wrong.
+//- - If the “src” URI scheme is “data:”, fill the content of the <artwork>
+//-   element with the correctly-escaped form of that data and remove the “src”
+//-   attribute.
+//- - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the content
+//-   of the <artwork> element with the correctly-escaped form of the resolved
+//-   text from the URI in the “src” attribute. Add an “originalSrc” attribute
+//-   with the value of the URI and remove the “src” attribute.
+
+include ./elements.jade
+
+mixin artwork(e)
+  - var typ = $att(e, 'type')
+  - var src = $att(e, 'src')
+  if (typ !== 'svg') && (typ !== 'binary-art') && src
+    if e.childNodes().length > 0
+      +error('<artwork> has src and children', e)
+    - var suri = defs.url.parse(src)
+    - var buf = null
+    if suri.protocol === 'data:'
+      - buf = defs.dataUri.decode(src)
+    else 
+      if suri.protocol === 'file:'
+        - buf = defs.fs.readFileSync(suri.pathname)
+      else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
+        - var res = defs.urllibsync.request(src)
+        if res.status !== 200
+          +error('HTTP error (' + res.statusCode + '): ' + src, e)
+        - buf = res.data
+      else
+        +error('Unknown <artwork> src protocol: ' + suri.protocol, e)
+      - e.attr('originalSrc', src)
+    - e.text(buf.toString())
+    - e.attr('src').remove()
+  +elem(e)
+  
++root

@@ -1,0 +1,38 @@
+{
+  "name": "rfc-preptool",
+  "version": "0.0.0",
+  "description": "Prepare an XML2RFCv3 document for publication with steps that match draft-iab-xml2rfc",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hildjj/rfc-preptool.git"
+  },
+  "keywords": [
+    "XML",
+    "XML2RFC",
+    "RFC",
+    "prepare",
+    "transform"
+  ],
+  "author": "Joe Hildebrand <joe-github@cursive.net>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/hildjj/rfc-preptool/issues"
+  },
+  "homepage": "https://github.com/hildjj/rfc-preptool#readme",
+  "dependencies": {
+    "bluebird": "3.3",
+    "commander": "2.9",
+    "datejs": "^1.0.0-rc3",
+    "dentin": "*",
+    "mime": "^1.3.4",
+    "slug": "0.9",
+    "strong-data-uri": "1.0",
+    "unicode-properties": "^1.1.0",
+    "urllib-sync": "1.1",
+    "xmljade": "*"
+  }
+}

@@ -1,0 +1,19 @@
+//- Create a <boilerplate> element if it does not exist. If there are any
+//- children of the <boilerplate> element, produce a warning that says “Existing
+//- boilerplate being removed. Other tools, specifically the draft submission
+//- tool, will treat this condition as an error” and remove the existing
+//- children.
+
+include ./elements.jade
+
+mixin boilerplate(e)
+  if e.find('*').length > 0
+    +warn('Existing boilerplate being removed.  Other tools, specifically the draft submission tool, will treat this condition as an error')
+  boilerplate
+    
+mixin front(e)
+  +elem(e)
+    if (e.parent().name() == 'rfc') && !e.get('boilerplate')
+      boilerplate
+
++root

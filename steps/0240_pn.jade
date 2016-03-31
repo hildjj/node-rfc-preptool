@@ -1,0 +1,49 @@
+//- Add “pn” attributes for all parts. Parts are:
+//- <section> in <middle>: pn=’s-1.4.2’
+//- <references>: pn=’s-12’ or pn=’s-12.1’
+//- <abstract>: pn=’s-abstract’
+//- <note>: pn=’s-note-2’
+//- <section> in <boilerplate>: pn=’s-boilerplate-1’
+//- <table>: pn=’t-3’
+//- <figure>: pn=’f-4’
+//- <artwork>, <aside>, <blockquote>, <dl>, <dt>, <li>, <ol>, 
+//-   <sourcecode>, <t>, <ul>: pn=’p-[section]-[counter]’
+
+include ./elements.jade
+
+mixin elem(e)
+  - var pno = attributes ? attributes.pn : null
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+  if pno 
+    - a.pn = pno
+  else if number.isPart(e)
+    - a.pn = number.partNumber(e)
+
+  #{$qname(e)}&attributes(a)
+    +nodes(e.childNodes())
+    block
+
+mixin figure(e)
+  +elem(e)(pn="f-" + number.sequentialNumber(e))
+
+mixin note(e)    
+  +elem(e)(pn="s-note-" + number.sequentialNumber(e))
+  
+mixin section(e)
+  if $att(e, 'numbered') === "false"
+    - var pnm = e.parent().name()
+    if  (pnm !== "middle") && (pnm !== "back") && (pnm !== "boilerplate")
+      +error("Un-numbered section must be a child of middle, back, or boilerplate", e)
+    if e.get('following-sibling::section[not(@numbered="false")]')
+      +error("Un-numbered section must not be followed by a numbered section", e)
+    
+  if $('ancestor::back', e)
+    +elem(e)(pn="s-" + number.appendix(e))
+  else
+    +elem(e)(pn="s-" + number.section(e))
+
+mixin table(e)
+  +elem(e)(pn="t-" + number.sequentialNumber(e))
+
++root

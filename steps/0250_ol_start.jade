@@ -1,0 +1,20 @@
+//- Add a “start” attribute to every <ol> element containing a group that
+//- does not already have a start.
+
+include ./elements.jade
+
+mixin ol(e)
+  if !$att(e, 'start')
+    - var group = $att(e, 'group')
+    if group
+      - var prev = $('preceding::ol[@group="' + group + '"][1]', e)
+      if prev
+        - var prevstart = parseInt($att(prev, 'start') || '1')
+        - e.attr('start', prevstart + $('count(li)', prev))
+      else
+        - e.attr('start', '1')
+    else
+      - e.attr('start', '1')
+  +elem(e)
+  
++root

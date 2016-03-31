@@ -1,0 +1,19 @@
+//- For each <relref> element that has content, fill the “derivedRemoteContent”
+//- with the element content, having first trimmed the whitespace from ends of
+//- content text. Issue a warning if the “derivedRemoteContent” attribute
+//- already exists and has a different value from what was being filled in.
+
+include ./elements.jade
+
+mixin relref(e)
+  - var txt = e.text() || ''
+  - txt = txt.trim()
+  if txt
+    - var old_drc = $att(e, 'derivedRemoteContent')
+    if old_drc && (old_drc !== txt)
+      +warn('Replacing invalid derivedRemoteContent: ' + old_drc, e)
+    - e.attr('derivedRemoteContent', txt)
+  
+  +elem(e)
+
++root

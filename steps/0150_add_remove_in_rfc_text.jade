@@ -1,0 +1,24 @@
+//- If in I-D mode, if there is a <note> element with a “removeInRFC”
+//- attribute that has the value “true”, add a paragraph to the top of the
+//- <note> element with the text “This note is to be removed before publishing
+//- as an RFC.” unless a paragraph consisting of that exact text already exists.
+
+include ./elements.jade
+
+- var REMOVE = 'This note is to be removed before publishing as an RFC.'
+
+mixin note(e)
+  if !rfcMode && ($att(e, 'removeInRFC') == 'true')
+    - var t = $('t', e)
+    if !t || (t.text().trim() != REMOVE)
+      - var rm = $element('t', REMOVE)
+      - var first = $('*', e)
+      if !first
+        - e.addChild(rm)
+      else if first.name() == 'name'
+        - first.addNextSibling(rm)
+      else
+        - first.addPrevSibling(rm)
+  +elem(e)
+  
++root

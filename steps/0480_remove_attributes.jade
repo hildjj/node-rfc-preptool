@@ -1,0 +1,15 @@
+//- If in RFC production mode, remove all “xml:base” or “originalSrc” attributes
+//- from all elements.
+
+include ./elements.jade
+
+mixin elem(e)
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+  - delete a['xml:base']
+  - delete a['originalSrc']
+  #{$qname(e)}&attributes(a)
+    +children(e)
+    block
+
++root

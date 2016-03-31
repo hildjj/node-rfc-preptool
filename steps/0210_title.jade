@@ -1,0 +1,20 @@
+//- For every <section> element that has a (deprecated) “title” attribute,
+//- remove the “title” attribute and insert a <name> element in that section
+//- with the title from the attribute.
+
+include ./elements.jade
+
+mixin section(e)
+  - var title = e.attr('title')
+  if title
+    - var nm = $element('name', title.value())
+    - var first = e.get('*')
+    if first
+      - first.addPrevSibling(nm)
+    else
+      - e.addChild(nm)
+    - title.remove()
+    
+  +elem(e)
+
++root

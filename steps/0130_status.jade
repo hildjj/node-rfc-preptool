@@ -1,0 +1,35 @@
+//- Add the “Status of this Memo” text with current values. However, if any
+//- boilerplate text already exists in the input, produce a warning that says
+//- “Other tools, specifically the draft submission tool, will treat that
+//- condition as an error”. The application will use the “submissionType”, and
+//- “consensus” attributes of the <rfc> element, the <workgroup> element, and
+//- the “status” and “stream” attributes of the <seriesInfo> element, to
+//- determine which [I-D.iab-rfc5741bis] boilerplate to include, as described in
+//- Appendix A of [I-D.iab-xml2rfc].
+
+include ./elements.jade
+
+//- NOTE: This does NOT track 5741bis yet!
+mixin boilerplate(e)
+  +elem(e)
+    - var tlp = number.ipr($('@ipr'))
+    section(numbered="false")
+      name Status of this Memo
+      t.
+        This Internet-Draft is submitted in full conformance with
+        the provisions of BCP 78 and BCP 79.#{tlp[0]||""}
+      if !rfcMode
+        t.
+          Internet-Drafts are working documents of the Internet Engineering Task
+          Force (IETF).  Note that other groups may also distribute working
+          documents as Internet-Drafts.  The list of current Internet-Drafts is
+          at <eref target='http://datatracker.ietf.org/drafts/current/'/>.
+        t.
+          Internet-Drafts are draft documents valid for a maximum of six months
+          and may be updated, replaced, or obsoleted by other documents at any
+          time.  It is inappropriate to use Internet-Drafts as reference
+          material or to cite them other than as "work in progress."
+        t.
+          This Internet-Draft will expire on #{$('/rfc/@expiresDate')}.
+
++root

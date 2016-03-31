@@ -1,0 +1,18 @@
+//- If the <front> element of the <rfc> element does not already have a
+//- <seriesInfo> element whose name attribute has the value "Internet-Draft" or
+//- "RFC", add a <seriesInfo> element with the name attribute of
+//- “Internet-Draft" and a value attribute that is the input filename with any
+//- path or file extension removed. If the filename cannot be determined, give
+//- an error.
+
+include ./elements.jade
+
+mixin front(e)
+  +elem(e)
+    //- if rfcMode, we've already got /rfc/front/seriesInfo[@name="RFC"]
+    if !rfcMode && (e.parent().name() == 'rfc') && !$('seriesInfo[@name="Internet-Draft"]', e)
+      //- TODO: insert in the correct order.
+      - var nm = path.parse(defs.state.input).name
+      seriesInfo(name='Internet-Draft', value=nm)
+  
++root

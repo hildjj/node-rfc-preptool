@@ -1,0 +1,15 @@
+//- If a <sourcecode> element has a “src” attribute where no scheme is
+//- specified, treat the scheme as “file:” in a path relative to the file being
+//- processed.
+
+include ./elements.jade
+
+mixin sourcecode(e)
+  - var src = $att(e, 'src')
+  if src
+    - var suri = defs.url.parse(src)
+    if !suri.protocol
+      - e.attr('src', defs.state.inputUri.resolve(suri))
+  +elem(e)
+  
++root

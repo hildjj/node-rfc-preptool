@@ -1,0 +1,24 @@
+//- If a <sourcecode> element has a “src” attribute with a “file:” scheme, and
+//- if processing the URL would cause the processor to retrieve a file that is
+//- not in the same directory, or a subdirectory, as the file being processed,
+//- give an error. This rule attempts to prevent <sourcecode
+//- src=’file:///etc/passwd’> and similar security issues.
+
+include ./elements.jade
+
+mixin sourcecode(e)
+  - var src = $att(e, 'src')
+  if src
+    - var suri = defs.url.parse(src)
+    if suri.protocol === 'file:'
+      //- make sure all of the ..'s and whatnot are taken care of
+      //- TODO: test other shellmetas, like backticks, dollar, etc.
+      - var p = defs.path.resolve(suri.pathname)
+      if !p.startsWith(defs.state.cwd + defs.path.sep)
+        +error('invalid file: path: ' + src, e)
+      if p !== suri.pathname
+        - suri.pathname = p
+        - e.attr('src', suri.format())
+  +elem(e)
+  
++root

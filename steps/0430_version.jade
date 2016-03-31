@@ -1,0 +1,15 @@
+//- Ensure that the output has the “version” attribute of <rfc>, and that it is
+//- set to “3”.
+
+include ./elements.jade
+
+mixin rfc(e)
+  - var ver = $att(e, 'version')
+  if ver
+    if ver !== '3'
+      +error('invalid <rfc> version number: ' + ver)
+  else
+    e.attr('version', 3)
+  +elem(e)
+  
++root

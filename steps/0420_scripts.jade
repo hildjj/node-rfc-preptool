@@ -1,0 +1,11 @@
+//- Determine all the characters used in the document, and fill in the “scripts”
+//- attribute for <rfc>.
+
+include ./elements.jade
+
+mixin rfc(e)
+  - var text = $root().toString()
+  - e.attr('scripts', number.scripts(text))
+  +elem(e)
+  
++root

@@ -1,0 +1,68 @@
+- var number = defs.number
+- var path = defs.path
+- var pubDate = defs.state.pubDate
+- var rfcMode = !!$('front/seriesInfo[@name="RFC"]')
+
+mixin warn(msg, n)
+  - ln = ""
+  if n && n.line
+    - ln = " (input line " + n.line() + ")"
+  - console.error("WARNING" + ln + ": " + msg)
+
+mixin error(msg, n)
+  - ln = ""
+  if n && n.line
+    - ln = " (input line " + n.line() + ")"
+  - console.error("ERROR:" + ln + ": " + msg)
+  if n && n.toString
+    - console.error("  | " + n.toString())
+  - process.exit(1)
+
+mixin children(e, opts)
+  +nodes(e.childNodes())
+
+mixin NODE_pi(c)
+  //- +warn("PI remaining in input", c)
+  != "<?" + c.name() + " " + c.text() + "?>"
+
+mixin NODE_comment(c)
+  != "<!--" + c.text() + "-->"
+  
+mixin nodes(list)
+  each c in list
+    case c.type()
+      when 'text'
+        if c.text().trim().length > 0
+          = c.text()
+      when 'cdata'
+        :cdata
+          !{c.text()}
+      when 'comment'
+        +NODE_comment(c)
+      when 'element'
+        - var nm = c.name()
+        if jade_mixins[nm] != null
+          +#{nm}(c)
+        else
+          +elem(c, opts)
+      when 'pi'
+        +NODE_pi(c)
+      when 'entity_ref'
+        //- should not happen
+        +warn("Unexpanded entity reference " + c.name(), c)
+        = "&" + c.name() + ";"
+      default
+        +warn("Undefined node type: " + c.type(), c)
+
+mixin elem(e)
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+  #{$qname(e)}&attributes(a)
+    +children(e)
+    block
+
+mixin root()
+  doctype xml
+  +nodes($$('/*/preceding::node()'))
+  +nodes($$('/*'))
+  +nodes($$('/*/following::node()'))

@@ -1,0 +1,36 @@
+//- In every <email>, <organization>, <street>, <city>, <region>, <country>,
+//- and <code> element, if there is an “ascii” attribute and the value of tha
+//- attribute is the same as the content of the element, remove the “ascii”
+//- element.
+
+include ./elements.jade
+
+mixin rm_ascii(e)
+  - var ascii = e.attr('ascii')
+  if ascii && (ascii.value() == e.text().trim())
+    +warn('Removing redunant ascii attribute on ' +  e.name() + ": " + ascii.value())
+    - ascii.remove()
+  +elem(e)
+
+mixin email(e)
+  +rm_ascii(e)
+
+mixin organization(e)
+  +rm_ascii(e)
+  
+mixin street(e)
+  +rm_ascii(e)
+
+mixin city(e)
+  +rm_ascii(e)
+
+mixin region(e)
+  +rm_ascii(e)
+
+mixin country(e)
+  +rm_ascii(e)
+
+mixin code(e)
+  +rm_ascii(e)
+
++root

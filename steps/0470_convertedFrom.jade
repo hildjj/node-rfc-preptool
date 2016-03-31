@@ -1,0 +1,21 @@
+//- If in RFC production mode, check if there is a <link> element with the file
+//- name of the Internet-Draft that became this RFC; if not, add one of the form
+//- <link rel=”convertedFrom”
+//- href=”https://datatracker.ietf.org/doc/draft-tttttttttt/”>.
+
+include ./elements.jade
+
+mixin rfc(e)
+  if rfcMode
+    - var found = false
+    - var hrefs = $$('link[@rel="convertedFrom"]/@href', e) 
+    each href in hrefs
+      if href.value().startsWith('https://dx.doi.org')
+        - found = true
+    if !found
+      //- no way to know what the source is.
+      +error('In rfc-mode, <link rel="convertedFrom" href=""/> requried')
+    
+  +elem(e)
+
++root

@@ -1,0 +1,26 @@
+//- If in RFC production mode, check if there is a <link> element with a DOI for
+//- this RFC; if not, add one of the form <link rel=”describedBy”
+//- href=”https://dx.doi.org/10.17487/rfcdddd”>.
+
+include ./elements.jade
+
+mixin rfc(e)
+  if rfcMode
+    - var found = false
+    - var hrefs = $$('link[@rel="describedBy"]/@href', e) 
+    each href in hrefs
+      if href.value().startsWith('https://dx.doi.org')
+        - found = true
+    if !found
+      - var children = e.childNodes()
+      if children.length === 0
+        +error('Not a convincing RFC')
+      - var l = $element('link')
+      - var val = $('front/seriesInfo[@name="RFC"]/@value')
+      - l.attr('rel', 'describedBy')
+      - l.attr('href', 'href=”https://dx.doi.org/10.17487/rfc' + val)
+      - children[0].addPrevSibling(l)
+      
+  +elem(e)
+
++root

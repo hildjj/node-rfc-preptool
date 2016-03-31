@@ -1,0 +1,70 @@
+//- Fill in any default values for attributes on elements, except
+//- “keepWithNext” and “keepWithPrevious” of <t>, and “toc” of <section>. Some
+//- default values can be found in the Relax NG schema, while others can be
+//- found in the prose describing the elements in [I-D.iab-xml2rfc]).
+
+include ./elements.jade
+
+mixin artwork(e)
+  - number.defaultAttr(e, 'align', 'left')
+  +elem(e)
+
+mixin cref(e)
+  - number.defaultAttr(e, 'display', 'true')
+  +elem(e)
+
+mixin dl(e)
+  - number.defaultAttr(e, 'hanging', 'true')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin iref(e)
+  - number.defaultAttr(e, 'primary', 'false')
+  +elem(e)
+  
+mixin ol(e)
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin reference(e)
+  - number.defaultAttr(e, 'quoteTitle', 'true')
+  +elem(e)
+
+mixin rfc(e)
+  - number.defaultAttr(e, 'consensus', 'false')
+  - number.defaultAttr(e, 'indexInclude', 'true')
+  - number.defaultAttr(e, 'sortRefs', 'false')
+  - number.defaultAttr(e, 'submissionType', 'IETF')
+  - number.defaultAttr(e, 'symRefs', 'true')
+  - number.defaultAttr(e, 'tocInclude', 'true')
+  - number.defaultAttr(e, 'version', '3')
+  if $att(e, 'tocInclude') == 'true'
+    - number.defaultAttr(e, 'tocDepth', '3');
+  +elem(e)
+
+mixin td(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin th(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin tr(e)
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin ul(e)
+  - number.defaultAttr(e, 'empty', 'false')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin xref(e)  
+  - number.defaultAttr(e, 'format', 'default')
+  if $att(e, 'section')
+    - number.defaultAttr(e, 'sectionformat', 'of')
+  +elem(e)
+  
++root
