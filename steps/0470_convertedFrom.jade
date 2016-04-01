@@ -10,7 +10,7 @@ mixin rfc(e)
     - var found = false
     - var hrefs = $$('link[@rel="convertedFrom"]/@href', e) 
     each href in hrefs
-      if href.value().startsWith('https://dx.doi.org')
+      if href.startsWith('https://dx.doi.org')
         - found = true
     if !found
       //- no way to know what the source is.
