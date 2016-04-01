@@ -10,12 +10,12 @@ the same pass, avoiding XML parsing and serialization.
 
 ## Installation
 
-''' bash
+``` bash
 npm install -g rfc-preptool
-'''
+```
 
 ## Running
 
-'''
+``` bash
 rfc-preptool <input file> <output file>
-'''
+```
