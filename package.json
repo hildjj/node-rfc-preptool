@@ -1,6 +1,6 @@
 {
   "name": "rfc-preptool",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Prepare an XML2RFCv3 document for publication with steps that match draft-iab-xml2rfc",
   "main": "lib/state.js",
   "bin": {
