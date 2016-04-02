@@ -10,11 +10,10 @@ mixin rfc(e)
     - var found = false
     - var hrefs = $$('link[@rel="convertedFrom"]/@href', e) 
     each href in hrefs
-      if href.startsWith('https://dx.doi.org')
-        - found = true
+      - found = true
     if !found
       //- no way to know what the source is.
-      +error('In rfc-mode, <link rel="convertedFrom" href=""/> requried')
+      +error('In rfc-mode, <link rel="convertedFrom" href="https://datatracker.ietf.org/doc/draft-"/> requried')
     
   +elem(e)
 
