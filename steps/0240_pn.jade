@@ -6,44 +6,48 @@
 //- <section> in <boilerplate>: pn=’s-boilerplate-1’
 //- <table>: pn=’t-3’
 //- <figure>: pn=’f-4’
-//- <artwork>, <aside>, <blockquote>, <dl>, <dt>, <li>, <ol>, 
+//- <artwork>, <aside>, <blockquote>, <dl>, <dt>, <li>, <ol>,
 //-   <sourcecode>, <t>, <ul>: pn=’p-[section]-[counter]’
 
 include ./elements.jade
 
-mixin elem(e)
-  - var pno = attributes ? attributes.pn : null
+mixin elem(e, pn)
+  - pn = pn || number.partNumber(e)
+  if pn
+    - e.attr('pn', pn)
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
-  if pno 
-    - a.pn = pno
-  else if number.isPart(e)
-    - a.pn = number.partNumber(e)
-
+  
   #{$qname(e)}&attributes(a)
-    +nodes(e.childNodes())
+    +children(e)
     block
 
 mixin figure(e)
-  +elem(e)(pn="f-" + number.sequentialNumber(e))
+  +elem(e, "f-" + number.sequentialNumber(e))
 
-mixin note(e)    
-  +elem(e)(pn="s-note-" + number.sequentialNumber(e))
-  
-mixin section(e)
-  if $att(e, 'numbered') === "false"
-    - var pnm = e.parent().name()
-    if  (pnm !== "middle") && (pnm !== "back") && (pnm !== "boilerplate")
-      +error("Un-numbered section must be a child of middle, back, or boilerplate", e)
-    if e.get('following-sibling::section[not(@numbered="false")]')
-      +error("Un-numbered section must not be followed by a numbered section", e)
-    
-  if $('ancestor::back', e)
-    +elem(e)(pn="s-" + number.appendix(e))
+mixin note(e)
+  +elem(e, "s-note-" + number.sequentialNumber(e))
+
+mixin references(e)
+  - var first_section = $('count(/rfc/middle/section)') + 1
+  - var sn = null
+  if $('count(/rfc/back/references)') === 1
+    //- if there's only one reference, next section after last in middle.
+    - sn = first_section
   else
-    +elem(e)(pn="s-" + number.section(e))
+    //- if there's more than one, there's a phantom section as the parent.
+    - var prev = $('count(preceding::references)', e) + 1;
+    - sn = first_section + '.' + prev
+  +elem(e, "s-" + sn)
 
+mixin section(e)
+  if $('ancestor::back', e)
+    - e.attr('pn', 's-' + number.appendix(e))
+  else
+    - e.attr('pn', 's-' + number.section(e))
+  +elem(e, null)
+  
 mixin table(e)
-  +elem(e)(pn="t-" + number.sequentialNumber(e))
+  +elem(e, 't-' + number.sequentialNumber(e))
 
 +root
