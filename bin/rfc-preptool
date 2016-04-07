@@ -1,2 +1,29 @@
 #!/usr/bin/env node
-require('../lib/main')
+
+'use strict';
+
+var commander = require('commander');
+var State = require('../lib/state');
+
+var program = new commander.Command;
+program
+  .arguments('<input> <output>')
+  .option('-d, --debug [dir]', 'output each step to dir')
+  .option('-v, --verbose', 'output the name of each step')
+  .option('-r, --rfc', 'force RFC mode')
+  .option('-i, --id', 'force I-D mode')
+  .parse(process.argv);
+
+program.input  = program.args.shift();
+program.output = program.args.shift();
+if (!program.input) {
+  program.help();
+  process.exit(64);
+}
+
+var state = new State(program);
+state.run()
+.catch((er) => {
+  console.error("Error:", er.message, er.stack);
+  process.exit(1);
+});

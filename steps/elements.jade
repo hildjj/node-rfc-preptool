@@ -1,7 +1,7 @@
-- var number = defs.number
-- var path = defs.path
-- var pubDate = defs.state.pubDate
-- var rfcMode = !!$('front/seriesInfo[@name="RFC"]')
+- const number = defs.number
+- const path = defs.path
+- const pubDate = defs.state.pubDate
+- const rfcMode = defs.state.opts.id ? false : (defs.state.opts.rfc || !!$('front/seriesInfo[@name="RFC"]'))
 
 mixin warn(msg, n)
   - ln = ""
