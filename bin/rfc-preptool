@@ -2,16 +2,23 @@
 
 'use strict';
 
-var commander = require('commander');
-var State = require('../lib/state');
+const
+  commander = require('commander'),
+  pkg = require('../package'),
+  State = require('../lib/state');
 
 var program = new commander.Command;
 program
-  .arguments('<input> <output>')
-  .option('-d, --debug [dir]', 'output each step to dir')
+  .version(pkg.version)
+  .arguments('<input> [output]')
+  .option('-d, --debug <dir>', 'output each step to dir')
   .option('-v, --verbose', 'output the name of each step')
   .option('-r, --rfc', 'force RFC mode')
   .option('-i, --id', 'force I-D mode')
+  .option('-s, --step <num>',
+          'Run this step (default is all, multiple ok)',
+          (v, a) => a.push(parseInt(v)) && a,
+          [])
   .parse(process.argv);
 
 program.input  = program.args.shift();
