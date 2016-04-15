@@ -1,0 +1,14 @@
+<rfc>
+  <front>
+    <title>None</title>
+    <author>
+      <address>
+        <email ascii='foo@example.com'>foo@example.com</email>
+        <email ascii='foot@example.com'>foo@example.com</email>
+      </address>
+    </author>
+  </front>
+  <middle>
+    <section/>
+  </middle>
+</rfc>

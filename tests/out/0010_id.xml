@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title abbrev="Test RFC">Testing in RFC mode</title>
+    <author fullname="Joe – Hildebrand" role="editor"/>
+    <seriesInfo name="RFC" value="10000"/>
+  </front>
+</rfc>

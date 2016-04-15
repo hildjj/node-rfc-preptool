@@ -10,13 +10,13 @@ mixin warn(msg, n)
   - console.error("WARNING" + ln + ": " + msg)
 
 mixin error(msg, n)
-  - ln = ""
-  if n && n.line
-    - ln = " (input line " + n.line() + ")"
-  - console.error("ERROR:" + ln + ": " + msg)
-  if n && n.toString
-    - console.error("  | " + n.toString())
-  - process.exit(1)
+  - var er = new Error(msg);
+  - er.msg = msg
+  if n 
+    - er.element = n
+    if n.line
+      - er.line = n.line()
+  - throw er
 
 mixin children(e, opts)
   +nodes(e.childNodes())

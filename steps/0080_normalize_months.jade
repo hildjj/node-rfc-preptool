@@ -8,7 +8,7 @@ mixin date(e)
   if m
     - var n = Date.getMonthNumberFromName(m)
     if n >= 0
-    - e.attr('month', n+1)
+      - e.attr('month', n+1)
   +elem(e)
   
 +root

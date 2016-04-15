@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rfc>
+  <middle/>
+  <back>
+    <references>
+      <name>Informational Refernces</name>
+      <reference target="https://tools.ietf.org/html/rfc2119">
+        <seriesInfo name="RFC" value="2119"/>
+      </reference>
+      <reference target="https://tools.ietf.org/html/draft-hildebrand-middlebox-erosion-01">
+        <seriesInfo name="Internet-Draft"
+                    value="draft-hildebrand-middlebox-erosion-01"/>
+      </reference>
+      <reference target="http://doi.org/10.17487/RFC2119">
+        <seriesInfo name="DOI" value="10.17487/RFC2119"/>
+      </reference>
+    </references>
+  </back>
+</rfc>

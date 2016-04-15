@@ -1,0 +1,10 @@
+<rfc>
+  <front>
+    <note removeInRFC="false"><t>Don't do stuff</t></note>
+    <note removeInRFC="true"><t>Do stuff</t></note>
+    <note removeInRFC="true">
+      <t>This note is to be removed before publishing as an RFC.</t>
+      <t>Do more stuff</t>
+    </note>
+  </front>
+</rfc>

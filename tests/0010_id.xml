@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+[
+    <!ENTITY ndash   "&#8211;">
+]>
+<rfc>
+  <front>
+    <title abbrev='Test RFC'>Testing in RFC mode</title>
+    <author role='editor'
+      fullname='Joe &ndash; Hildebrand'/>
+    <seriesInfo name='RFC' value='10000'/>
+  </front>
+
+</rfc>

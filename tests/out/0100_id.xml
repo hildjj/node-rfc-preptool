@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rfc consensus="false"
+     indexInclude="true"
+     sortRefs="false"
+     submissionType="IETF"
+     symRefs="true"
+     tocDepth="3"
+     tocInclude="true"
+     version="3">
+  <middle>
+    <section>
+      <name>One</name>
+      <artwork align="left"/>
+      <cref display="true"/>
+      <dl hanging="true" spacing="normal">
+        <dt>one</dt>
+        <dd>two</dd>
+      </dl>
+      <iref primary="false"/>
+      <ol spacing="normal"/>
+    </section>
+  </middle>
+  <back>
+    <references>
+      <reference quoteTitle="true"/>
+      <reference quoteTitle="false"/>
+    </references>
+  </back>
+</rfc>
