@@ -1,0 +1,10 @@
+//- If an <artwork> element has a "src" attribute, and the element has
+//- content, give an error.
+
+include ./elements.jade
+
+mixin artwork(e)
+  if $attr(e, 'src') && (e.children().length > 0)
+    +error('Invalid artwork with both source and contents')
+
++root

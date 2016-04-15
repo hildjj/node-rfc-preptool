@@ -1,0 +1,10 @@
+//- If a <sourcecode> element has a “src” attribute, and the element has
+//- content, give an error.
+
+include ./elements.jade
+
+mixin sourcecode(e)
+  if $attr(e, 'src') && (e.children().length > 0)
+    +error('Invalid sourcecode with both source and contents')
+
++root
