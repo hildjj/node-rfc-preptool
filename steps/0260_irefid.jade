@@ -1,8 +1,8 @@
 //- In every <iref> element create a document-unique irefid attribute.  The 
-//- irefid will start with 's-', and use the item attribute, the subitem 
+//- irefid will start with 'i-', and use the item attribute, the subitem 
 //- attribute (if it exists), and a counter to ensure unqiqueness.  For example,
 //- the first instance of <iref item='foo' subitem='bar'> will get the irefid
-//- of 's-foo-bar-1'.
+//- of 'i-foo-bar-1'.
 
 include ./elements.jade
 
@@ -10,7 +10,7 @@ include ./elements.jade
 
 mixin iref(e)
   - var si = $att(e,'subitem')
-  - var isi = 's-' + defs.slug($att(e,'item')) + ((si==null)?"":("-"+defs.slug(si)))
+  - var isi = 'i-' + defs.slug($att(e,'item')) + ((si==null)?"":("-"+defs.slug(si)))
   - var num = irefs[isi] || 0
   - num += 1
   - irefs[isi] = num

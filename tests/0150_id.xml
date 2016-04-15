@@ -1,9 +1,23 @@
-<rfc>
+<?xml version="1.0"?>
+<rfc expiresDate="2014-07-01">
   <front>
-    <note removeInRFC="true"><t>Do stuff</t></note>
-    <note removeInRFC="true">
-      <t>This note is to be removed before publishing as an RFC.</t>
-      <t>Do more stuff</t>
-    </note>
+    <boilerplate>
+      <section numbered="false">
+        <name>Status of this Memo</name>
+        <t>
+          This Internet-Draft is submitted in full conformance with
+          the provisions of BCP 78 and BCP 79.
+        </t>
+        <t>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at <eref target="http://datatracker.ietf.org/drafts/current/"/>.</t>
+        <t>
+          Internet-Drafts are draft documents valid for a maximum of
+          six months and may be updated, replaced, or obsoleted by
+          other documents at any time.  It is inappropriate to use
+          Internet-Drafts as reference material or to cite them other
+          than as "work in progress."
+        </t>
+        <t>This Internet-Draft will expire on 2014-07-01.</t>
+      </section>
+    </boilerplate>
   </front>
 </rfc>

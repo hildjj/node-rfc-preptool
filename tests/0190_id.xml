@@ -1,35 +1,9 @@
 <rfc>
   <front>
     <title>None</title>
-    <author/>
+    <author fullname="fullname" asciiFullname="fullname"/>
   </front>
   <middle>
     <section/>
   </middle>
-  <back>
-    <references>
-      <name>Informational Refernces</name>
-      <reference anchor='RFC2119'>
-        <front>
-          <title>2119</title>
-          <author/>
-        </front>
-        <seriesInfo name='RFC' value='2119'/>
-      </reference>
-      <reference anchor='draft-hildebrand-middlebox-erosion'>
-        <front>
-          <title>draft-hildebrand-middlebox-erosion</title>
-          <author/>
-        </front>
-        <seriesInfo name='Internet-Draft' value='draft-hildebrand-middlebox-erosion-01' />
-      </reference>
-      <reference anchor='RFC2119doi'>
-        <front>
-          <title>DOI version</title>
-          <author/>
-        </front>
-        <seriesInfo name='DOI' value='10.17487/RFC2119'/>
-      </reference>
-    </references>
-  </back>
 </rfc>

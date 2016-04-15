@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <rfc>
   <front>
-    <boilerplate/>
+    <title abbrev="Test RFC">Testing in RFC mode</title>
+    <author/>
   </front>
+  <middle>
+    <section>
+      <name>None</name>
+      <t>Testing.</t>
+    </section>
+  </middle>
 </rfc>

@@ -1,7 +1,12 @@
 <rfc>
   <front>
-    <boilerplate>
-      <section/>
-    </boilerplate>
+    <title abbrev='Test RFC'>Testing in RFC mode</title>
+    <author/>
   </front>
+  <middle>
+    <section>
+      <name>None</name>
+      <t>Testing. <cref>This is a <strong>comment</strong></cref></t>
+    </section>
+  </middle>
 </rfc>

@@ -7,7 +7,7 @@
     process.chdir(__dirname); fs.readdirAsync(__dirname) .then((dir)
     =&gt; { dir.sort(); return bb.mapSeries(dir, (test) =&gt; { const
     m = test.match(/^0*(\d+)_(id|rfc)(_fail)?.*\.xml$/i); if (m) { var
-    ret = new State({ step: [parseInt(m[1]) / 10, 49], input:
+    ret = new State({ step: [parseInt(m[1]) / 10, 51], input:
     path.join(__dirname, test), output: path.join(__dirname, "out",
     test), rfc: m[2] === 'rfc', id: m[2] === 'id' }) .run(); if (m[3])
     { ret = ret.then(_ =&gt; { var er = new Error('Expected error, but

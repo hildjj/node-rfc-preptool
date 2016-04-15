@@ -14,7 +14,7 @@ fs.readdirAsync(__dirname)
     const m = test.match(/^0*(\d+)_(id|rfc)(_fail)?.*\.xml$/i);
     if (m) {
       var ret = new State({
-        step:   [parseInt(m[1]) / 10, 49],
+        step:   [parseInt(m[1]) / 10, 51],
         input:  path.join(__dirname, test),
         output: path.join(__dirname, "out", test),
         rfc:    m[2] === 'rfc',
