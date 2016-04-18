@@ -1,0 +1,15 @@
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section pn="s-1">
+      <name>Boo</name>
+      <iref item='boo'/>
+      <!-- should we check for dups, if we use the section pn? -->
+      <iref item='boo'/>
+      <t pn="s-1-1">Some <em>text<iref item='boo' subitem='boo'/></em></t>
+    </section>
+  </middle>
+</rfc>

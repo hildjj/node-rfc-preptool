@@ -8,7 +8,7 @@ include ./elements.jade
 
 mixin boilerplate(e)
   if e.find('*').length > 0
-    +warn('Existing boilerplate being removed.  Other tools, specifically the draft submission tool, will treat this condition as an error')
+    +warn('Existing boilerplate being removed.  Other tools, specifically the draft submission tool, will treat this condition as an error', e)
   boilerplate
     
 mixin front(e)

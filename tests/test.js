@@ -14,7 +14,7 @@ fs.readdirAsync(__dirname)
     const m = test.match(/^0*(\d+)_(id|rfc)(_fail)?.*\.xml$/i);
     if (m) {
       var ret = new State({
-        step:   [parseInt(m[1]) / 10, 51],
+        step:   [parseInt(m[1]) / 10, 53],
         input:  path.join(__dirname, test),
         output: path.join(__dirname, "out", test),
         rfc:    m[2] === 'rfc',
@@ -40,9 +40,10 @@ fs.readdirAsync(__dirname)
   })
 })
 .catch(er => {
-  console.log("failed", er && er.test);
   if (er.msg) {
-    console.log(er.msg);
+    console.error(`ERROR in "${er.test}" (input line ${er.line}): ${er.msg}`);
+  } else {
+    console.error(er);
   }
   process.exit(1);
 });

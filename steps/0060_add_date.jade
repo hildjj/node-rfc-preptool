@@ -25,7 +25,7 @@ mixin front(e)
       if !modify && !rfcMode
         //- check
         if old.addDays(3) < pubDate
-          +warn('/rfc/front/date more than 3 days old')
+          +warn('/rfc/front/date more than 3 days old', date)
     if modify
       - date.attr('year',  pubDate.getFullYear())
       - date.attr('month', pubDate.getMonth()+1)

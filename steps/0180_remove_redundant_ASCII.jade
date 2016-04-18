@@ -8,7 +8,7 @@ include ./elements.jade
 mixin rm_ascii(e)
   - var ascii = e.attr('ascii')
   if ascii && (ascii.value() == e.text().trim())
-    +warn('Removing redunant ascii attribute on ' +  e.name() + ": " + ascii.value())
+    +warn('Removing redunant ascii attribute on ' +  e.name() + ": " + ascii.value(), e)
     - ascii.remove()
   +elem(e)
 

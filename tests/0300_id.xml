@@ -1,0 +1,76 @@
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section anchor='s1' pn="s-1">
+      <name>First <tt>Thing</tt> First</name>
+      <ol pn="s-1-1" start="4">
+        <li pn="s-1-1.1" anchor="one">Foo</li>
+      </ol>
+      <ol pn="s-1-1" start="29" type='A'>
+        <li pn="s-1-1.1" anchor="two">Foo</li>
+      </ol>
+      <t pn="s-1-2">
+        <xref format="counter" target="s1"/>
+        <xref format="counter" target="fig"/>
+        <xref format="counter" target="tab"/>
+        <xref format="counter" target="one"/>
+        <xref format="counter" target="two"/>
+
+        <xref format="default" target="RFC2119"/>
+        <xref format="default" target="s1"/>
+        <xref format="default" target="fig"/>
+        <xref format="default" target="tab"/>
+
+        <xref format="title" target="RFC2119"/>
+        <xref format="title" target="s1"/>
+        <xref format="title" target="fig"/>
+      </t>
+      <figure anchor="fig" pn="f-1">
+        <artwork>
+Art
+        </artwork>
+      </figure>
+      <table anchor="tab" pn="t-1">
+        <tbody>
+          <tr><td/></tr>
+        </tbody>
+      </table>
+    </section>
+  </middle>
+  <back>
+    <references pn="s-2">
+      <name>Informational Refernces</name>
+      <reference anchor="RFC2119"
+                 target="http://www.rfc-editor.org/info/rfc2119">
+        <front>
+          <title>
+            Key words for use in RFCs to Indicate Requirement Levels
+          </title>
+          <author fullname="S. Bradner"
+                  initials="S."
+                  surname="Bradner">
+            <organization/>
+          </author>
+          <date month="March" year="1997"/>
+          <abstract>
+            <t>
+              In many standards track documents several words are used
+              to signify the requirements in the specification.  These
+              words are often capitalized. This document defines these
+              words as they should be interpreted in IETF documents.
+              This document specifies an Internet Best Current
+              Practices for the Internet Community, and requests
+              discussion and suggestions for improvements.
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name="BCP" value="14"/>
+        <seriesInfo name="RFC" value="2119"/>
+        <seriesInfo name="DOI" value="10.17487/RFC2119"/>
+      </reference>
+    </references>
+  </back>
+</rfc>

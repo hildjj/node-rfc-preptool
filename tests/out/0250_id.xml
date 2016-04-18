@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author asciiFullname="fullname" fullname="fullname"/>
+    <note pn="s-note-1">
+      <name slugifiedName="n-blah">Blah</name>
+      <t pn="s-note-1.1">bene</t>
+    </note>
+  </front>
+  <middle>
+    <section pn="s-1">
+      <name slugifiedName="boon">Foo</name>
+      <t pn="s-1-1">Some <em>text</em></t>
+      <ul pn="s-1-2">
+        <li pn="s-1-2.1">foo</li>
+        <li pn="s-1-2.2">
+          <t pn="s-1-2.2.1">one</t>
+          <t pn="s-1-2.2.2">two</t>
+        </li>
+      </ul>
+      <list pn="s-1-3">
+        <t pn="s-1-3.1">old</t>
+        <t pn="s-1-3.2">list</t>
+      </list>
+      <figure pn="f-1">
+        <name>Fig</name>
+        <artwork pn="f-1-1">
+Some art.
+        </artwork>
+      </figure>
+    </section>
+    <section pn="s-2">
+      <name>Boo</name>
+    </section>
+  </middle>
+  <back>
+    <references pn="s-3"/>
+  </back>
+</rfc>

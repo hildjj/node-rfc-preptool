@@ -14,7 +14,7 @@ mixin rfc(e)
     if !found
       - var children = e.childNodes()
       if children.length === 0
-        +error('Not a convincing RFC')
+        +error('Not a convincing RFC', e)
       - var l = $element('link')
       - var val = $('front/seriesInfo[@name="RFC"]/@value')
       - l.attr('rel', 'describedBy')

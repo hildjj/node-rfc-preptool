@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author asciiFullname="fullname" fullname="fullname"/>
+    <note>
+      <name slugifiedName="n-NOT-blah">Blah</name>
+      <t>bene</t>
+    </note>
+  </front>
+  <middle>
+    <section>
+      <name>Boo</name>
+    </section>
+  </middle>
+  <back>
+    <references/>
+    <references/>
+  </back>
+</rfc>

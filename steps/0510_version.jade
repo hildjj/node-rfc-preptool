@@ -7,7 +7,7 @@ mixin rfc(e)
   - var ver = $att(e, 'version')
   if ver
     if ver !== '3'
-      +error('invalid <rfc> version number: ' + ver)
+      +error('invalid <rfc> version number: ' + ver, e)
   else
     e.attr('version', 3)
   +elem(e)

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section pn="s-1">
+      <name>Boo</name>
+      <iref item="boo" pn="i-boo-1"/>
+      <!-- should we check for dups, if we use the section pn? -->
+      <iref item="boo" pn="i-boo-2"/>
+      <t pn="s-1-1">Some <em>text<iref item="boo" pn="i-boo-boo-1" subitem="boo"/></em></t>
+    </section>
+  </middle>
+</rfc>

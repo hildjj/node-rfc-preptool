@@ -22,7 +22,7 @@ mixin relref(e)
   else
     //- TODO: check to see if the target has v3, and calculate the HTML URL
     if !section
-      +error("<relref> must have relative or section")
+      +error("<relref> must have relative or section", e)
     - dl = ref_target + '#s-' + section
   
   - var old_dl = $att(e, 'derivedLink')

@@ -43,10 +43,12 @@ mixin xref(e)
       //- For format='counter', the "derivedContent" is the section, figure,
       //- table, or ordered list number of the element with anchor equal to the
       //- xref  target.
-      if (tname == 'section') || (tname == 'figure') || (tname == 'table')
+      if (tname === 'section') || (tname === 'figure') || (tname === 'table')
         - dc = num
-      else if (tname == 'li') || (tname == 'dt')
+      else if tname === 'li'
         - dc = number.liNum(target_el)
+        if !dc
+          +error('xref to li not in ol', e)
       else
         +error('unkown xref target element type: ' + tname, e)
       
@@ -83,7 +85,7 @@ mixin xref(e)
         //- leaving only the text).
         - var name = $('name', target_el)
         if name
-          - dc = name.text().trim()
+          - dc = name.text()
         else
           //- For format=’title’, if the target element does not contain a
           //- <name> child element, the “derivedContent” attribute is the value
@@ -99,7 +101,8 @@ mixin xref(e)
     //- has a different value from what was being filled in.
     if !dc
       +error('Invalid state formatting <xref>', e)
-      
+    
+    - dc = dc.trim()
     - var old_dc = $att(e, 'derivedContent') || ''
     if old_dc && (old_dc !== dc)
         +warn('Overwriting invalid derivedContent: ' + old_dc, e)

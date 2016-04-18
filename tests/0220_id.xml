@@ -1,0 +1,25 @@
+<rfc>
+  <front>
+    <title>None</title>
+    <author fullname="fullname" asciiFullname="fullname"/>
+    <note title='Blah'>
+      <t>bene</t>
+    </note>
+  </front>
+  <middle>
+    <section title='Foo'>
+      <t>Some text</t>
+      <figure title='Fig'>
+        <artwork>
+Some art.
+        </artwork>
+      </figure>
+    </section>
+    <section>
+      <name>Boo</name>
+    </section>
+  </middle>
+  <back>
+    <references title='Bar'/>
+  </back>
+</rfc>

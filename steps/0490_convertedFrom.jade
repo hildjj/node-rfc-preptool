@@ -13,7 +13,7 @@ mixin rfc(e)
       - found = true
     if !found
       //- no way to know what the source is.
-      +error('In rfc-mode, <link rel="convertedFrom" href="https://datatracker.ietf.org/doc/draft-"/> requried')
+      +error('In rfc-mode, <link rel="convertedFrom" href="https://datatracker.ietf.org/doc/draft-"/> requried', e)
     
   +elem(e)
 

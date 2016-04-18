@@ -1,0 +1,25 @@
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section>
+      <t>
+        <xref target='RFC2119'>MUST</xref>
+        <xref target='RFC2119' derivedContent="SHOULD">MUST</xref>
+      </t>
+    </section>
+  </middle>
+  <back>
+    <references>
+      <name>Informational Refernces</name>
+      <reference anchor="RFC2119">
+        <front>
+          <title>2119</title>
+          <author/>
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>

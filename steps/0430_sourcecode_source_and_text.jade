@@ -5,6 +5,6 @@ include ./elements.jade
 
 mixin sourcecode(e)
   if $attr(e, 'src') && (e.children().length > 0)
-    +error('Invalid sourcecode with both source and contents')
+    +error('Invalid sourcecode with both source and contents', e)
 
 +root

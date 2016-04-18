@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rfc sortRefs="false">
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section/>
+  </middle>
+  <back>
+    <references>
+      <name>Informational Refernces</name>
+      <reference anchor="draft-hildebrand-middlebox-erosion">
+        <front>
+          <title>draft-hildebrand-middlebox-erosion</title>
+          <author/>
+        </front>
+      </reference>
+      <reference anchor="RFC2119doi">
+        <front>
+          <title>DOI version</title>
+          <author/>
+        </front>
+      </reference>
+      <reference anchor="RFC2119">
+        <front>
+          <title>2119</title>
+          <author/>
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>
