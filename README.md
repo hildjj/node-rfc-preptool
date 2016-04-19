@@ -33,5 +33,15 @@ npm install -g rfc-preptool
 ## Running
 
 ``` bash
-rfc-preptool <input file> <output file>
+Usage: rfc-preptool [options] <input> [output]
+
+  Options:
+
+    -h, --help         output usage information
+    -V, --version      output the version number
+    -d, --debug <dir>  output each step to dir
+    -v, --verbose      output the name of each step
+    -r, --rfc          force RFC mode
+    -i, --id           force I-D mode
+    -s, --step <num>   Run this step (default is all, multiple ok)
 ```
