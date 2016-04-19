@@ -4,7 +4,7 @@
 include ./elements.jade
 
 mixin artwork(e)
-  if $attr(e, 'src') && (e.children().length > 0)
+  if $att(e, 'src') && (e.children().length > 0)
     +error('Invalid artwork with both source and contents', e)
 
 +root
