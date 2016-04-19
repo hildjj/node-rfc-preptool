@@ -6,5 +6,6 @@ include ./elements.jade
 mixin artwork(e)
   if $att(e, 'src') && (e.children().length > 0)
     +error('Invalid artwork with both source and contents', e)
-
+  +elem(e)
+  
 +root
