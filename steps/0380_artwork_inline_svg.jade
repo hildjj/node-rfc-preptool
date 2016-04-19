@@ -29,7 +29,8 @@ mixin artwork(e)
           - buf = res.data
         else
           +error('Unknown <artwork> src protocol: ' + suri.protocol, e)
-        - e.attr('originalSrc', src)
+        if !$att(e, 'originalSrc')
+          - e.attr('originalSrc', src)
       - var doc = defs.xml.parseXml(buf)
       - e.addChild(doc.root())
       - e.attr('src').remove()  

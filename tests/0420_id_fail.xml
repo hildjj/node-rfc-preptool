@@ -5,11 +5,8 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <t>
-        <list>
-          <t>One</t>
-        </list>
-      </t>
+      <sourcecode originalSrc="../testsfrag.xml"
+                  src="file:///Users/jhildebr/track/rfc-preptool/testsfrag.xml"/>
     </section>
   </middle>
 </rfc>

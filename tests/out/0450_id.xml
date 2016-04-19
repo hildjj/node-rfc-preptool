@@ -1,15 +1,12 @@
-<rfc>
+<?xml version="1.0"?>
+<rfc scripts="Common,Greek,Han,Latin">
   <front>
     <title>None</title>
     <author/>
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <t>
-        <list>
-          <t>One</t>
-        </list>
-      </t>
+      <t>䝑ᾂ</t>
     </section>
   </middle>
 </rfc>

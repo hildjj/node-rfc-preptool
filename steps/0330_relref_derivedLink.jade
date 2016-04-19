@@ -6,24 +6,29 @@ mixin relref(e)
   - var target = $att(e, 'target');
   if !target
     +error('target required on <relref>', e)
-  - var target_el = $('//*[@anchor="' + target + '"]')
+  - var target_el = $('//reference[@anchor="' + target + '"]')
   if !target_el
     +error('<relref> target not found', e)
   - var ref_target = $att(target_el, 'target')
-  - var relative = $att(e, 'relative')
   - var section = $att(e, 'section')
   - var dl = null
   
-  //- TODO: different links if source is PDF or HTML
+  if !section
+    +error("section is required in <relref>", e)
+  
+  - var relative = $att(e, 'relative')
   if relative
-    if section
-      +error("can't have both relative and section on a <relref>", e)
     dl = ref_target + relative
   else
-    //- TODO: check to see if the target has v3, and calculate the HTML URL
-    if !section
-      +error("<relref> must have relative or section", e)
-    - dl = ref_target + '#s-' + section
+    //- TODO: fix URLs, figure out I-Ds
+    - var num = $('seriesInfo[@name="RFC"]/@value', target_el)
+    if num
+      - dl = `https://tools.ietf.org/html/rfc${num}#section-${section}`
+    else
+      - num = $('seriesInfo[@name="Internet-Draft"]/@value', target_el)
+      if !num
+        +error("relative is required for <relref>s not pointing at RFCs or I-Ds", e)
+      - dl = `https://tools.ietf.org/html/${num}#section-${section}`
   
   - var old_dl = $att(e, 'derivedLink')
   if old_dl && (old_dl !== dl)

@@ -9,7 +9,7 @@ mixin rfc(e)
     if ver !== '3'
       +error('invalid <rfc> version number: ' + ver, e)
   else
-    e.attr('version', 3)
+    - e.attr('version', 3)
   +elem(e)
   
 +root

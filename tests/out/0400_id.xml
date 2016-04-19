@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section anchor="s1" pn="s-1">
+      <artwork originalSrc="file:///Users/jhildebr/track/rfc-preptool/tests/circle.svg">&lt;svg height="100"
+     width="100"
+     xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;circle cx="50"
+          cy="50"
+          fill="white"
+          r="40"
+          stroke="black"
+          stroke-width="4"/&gt;
+&lt;/svg&gt;
+</artwork>
+      <artwork originalSrc="circle.svg">&lt;svg height="100"
+     width="100"
+     xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;circle cx="50"
+          cy="50"
+          fill="white"
+          r="40"
+          stroke="black"
+          stroke-width="4"/&gt;
+&lt;/svg&gt;
+</artwork>
+    </section>
+  </middle>
+</rfc>

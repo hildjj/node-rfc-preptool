@@ -29,7 +29,8 @@ mixin sourcecode(e)
         - buf = res.data
       else
         +error('Unknown <sourcecode> src protocol: ' + suri.protocol, e)
-      - e.attr('originalSrc', src)
+      if !$att(e, 'originalSrc')
+        - e.attr('originalSrc', src)
     - e.text(buf.toString())
     - e.attr('src').remove()
   +elem(e)

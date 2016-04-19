@@ -1,15 +1,14 @@
+<?xml version="1.0"?>
 <rfc>
+  <link href="https://tools.ietf.org/html/draft-iab-xml2rfc-03"
+        rel="convertedFrom"/>
   <front>
     <title>None</title>
     <author/>
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <t>
-        <list>
-          <t>One</t>
-        </list>
-      </t>
+      <t>nope</t>
     </section>
   </middle>
 </rfc>

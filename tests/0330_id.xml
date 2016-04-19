@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section anchor="s1" pn="s-1">
+      <t pn="s-1-1">
+        <relref section="1" target="RFC2119"/>
+        <relref section="2" target="I-D.hildebrand-deth"/>
+      </t>
+    </section>
+  </middle>
+  <back>
+    <references pn="s-2">
+      <name>Informational Refernces</name>
+      <reference anchor="RFC2119"
+                 target="http://www.rfc-editor.org/info/rfc2119">
+        <front>
+          <title>
+            Key words for use in RFCs to Indicate Requirement Levels
+          </title>
+          <author/>
+        </front>
+        <seriesInfo name="RFC" value="2119"/>
+      </reference>
+      <reference anchor="I-D.hildebrand-deth"
+                 target="https://tools.ietf.org/html/draft-hildebrand-deth-00">
+        <front>
+          <title>DNS Editing Through HTTPS (DETH)</title>
+          <author fullname="Joe Hildebrand"
+                  initials="J"
+                  surname="Hildebrand">
+            <organization/>
+          </author>
+          <author fullname="Paul Hoffman"
+                  initials="P"
+                  surname="Hoffman">
+            <organization/>
+          </author>
+          <date day="21" month="March" year="2016"/>
+        </front>
+        <seriesInfo name="Internet-Draft"
+                    value="draft-hildebrand-deth-00"/>
+        <format target="http://www.ietf.org/internet-drafts/draft-hildebrand-deth-00.txt"
+                type="TXT"/>
+      </reference>
+    </references>
+  </back>
+</rfc>

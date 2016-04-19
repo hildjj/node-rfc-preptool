@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section anchor="s1" pn="s-1">
+      <t pn="s-1-1">
+        <relref section="1" target="RFC2119"/>
+      </t>
+    </section>
+  </middle>
+  <back>
+    <references pn="s-2">
+      <name>Informational Refernces</name>
+      <reference anchor="RFC2119"
+                 target="http://www.rfc-editor.org/info/rfc2119">
+        <front>
+          <title>
+            Key words for use in RFCs to Indicate Requirement Levels
+          </title>
+          <author/>
+        </front>
+        <seriesInfo name="RFC" value="2119"/>
+      </reference>
+    </references>
+  </back>
+</rfc>

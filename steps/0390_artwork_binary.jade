@@ -33,7 +33,8 @@ mixin artwork(e)
         else
           +error('Unknown <artwork> src protocol: ' + suri.protocol, e)
         - e.attr('src', defs.dataUri.encode(buf, media))
-        - e.attr('originalSrc', src)
+        if !$att(e, 'originalSrc')
+          - e.attr('originalSrc', src)
   +elem(e)
 
 +root

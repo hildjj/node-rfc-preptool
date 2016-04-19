@@ -5,11 +5,8 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <t>
-        <list>
-          <t>One</t>
-        </list>
-      </t>
+      <artwork originalSrc="circle.svg" type="svg"
+               src="file:///Users/jhildebr/track/rfc-preptool/tests/circle.svg"/>
     </section>
   </middle>
 </rfc>

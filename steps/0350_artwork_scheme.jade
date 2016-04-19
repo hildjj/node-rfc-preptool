@@ -10,6 +10,8 @@ mixin artwork(e)
   if src
     - var suri = defs.url.parse(src)
     if !suri.protocol
+      if !$att(e, 'originalSrc')
+        - e.attr('originalSrc', src)
       - e.attr('src', defs.state.inputUri.resolve(suri))
   +elem(e)
   
