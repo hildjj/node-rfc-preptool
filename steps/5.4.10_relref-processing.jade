@@ -1,4 +1,11 @@
-//- For each <relref> element, fill in the “derivedLink” attribute
+//- If any <relref> element’s “target” attribute refers to anything but a
+//- <reference> element, give an error.
+
+//- For each <relref> element referring to a <reference> that has an associated
+//- <displayreference>, modify the “target” attribute of the <relref> to match
+//- the “to” attribute of the associated <displayreference>.
+
+//- For each <relref> element, fill in the “derivedLink” attribute.
 
 include ./elements.jade
 
@@ -6,16 +13,25 @@ mixin relref(e)
   - var target = $att(e, 'target');
   if !target
     +error('target required on <relref>', e)
-  - var target_el = $('//reference[@anchor="' + target + '"]')
-  if !target_el
+  - var reference = $('//*[@anchor="' + target + '"]')
+  if !reference
     +error('<relref> target not found', e)
-  - var ref_target = $att(target_el, 'target')
-  - var section = $att(e, 'section')
+  - var tname = reference.name()
+  if tname !== 'reference'
+    +error('<relref> target must be <reference>, not: ' + tname, e)
+
+  - var dr = $('//displayreference[@target="' + target + '"]')
+  if dr
+    - var to = $att(dr, 'to')
+    if to
+      - target = to
+      - e.attr('target', to)
+
   - var dl = null
-  
+  - var section = $att(e, 'section')
   if !section
     +error("section is required in <relref>", e)
-  
+
   - var relative = $att(e, 'relative')
   if relative
     dl = ref_target + relative
@@ -29,11 +45,12 @@ mixin relref(e)
       if !num
         +error("relative is required for <relref>s not pointing at RFCs or I-Ds", e)
       - dl = `https://tools.ietf.org/html/${num}#section-${section}`
-  
+
   - var old_dl = $att(e, 'derivedLink')
   if old_dl && (old_dl !== dl)
     +warn('replacing invalid derivedLink: ' + old_dl, e)
   - e.attr('derivedLink', dl)
+
   +elem(e)
 
 +root

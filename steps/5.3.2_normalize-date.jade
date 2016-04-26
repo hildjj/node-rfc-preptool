@@ -1,0 +1,14 @@
+//- Normalize the values of “year” attributes in all <date> elements in <front>
+//- elements in <rfc> elements to be four-digit values.
+
+include ./elements.jade
+
+mixin date(e)
+  if !$('ancestor::reference', e)
+    - var y = $att(e, 'year')
+    if y && (y.length < 4)
+      - y = parseInt(y)
+      - e.attr('year', y + 1900)
+  +elem(e)
+  
++root
