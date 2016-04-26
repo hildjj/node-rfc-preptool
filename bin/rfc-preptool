@@ -17,7 +17,7 @@ program
   .option('-i, --id', 'force I-D mode')
   .option('-s, --step <num>',
           'Run this step (default is all, multiple ok)',
-          (v, a) => a.push(parseInt(v)) && a,
+          (v, a) => a.push(parseFloat(v)) && a,
           [])
   .parse(process.argv);
 
@@ -31,6 +31,6 @@ if (!program.input) {
 var state = new State(program);
 state.run()
 .catch((er) => {
-  console.error("Error:", er.message, er.stack);
+  console.error("Error:", er.message);
   process.exit(1);
 });
