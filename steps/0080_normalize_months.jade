@@ -4,11 +4,12 @@
 include ./elements.jade
 
 mixin date(e)
-  - var m = $att(e, 'month')
-  if m
-    - var n = Date.getMonthNumberFromName(m)
-    if n >= 0
-      - e.attr('month', n+1)
+  if !$('ancestor::reference', e)
+    - var m = $att(e, 'month')
+    if m
+      - var n = Date.getMonthNumberFromName(m)
+      if n >= 0
+        - e.attr('month', n+1)
   +elem(e)
   
 +root

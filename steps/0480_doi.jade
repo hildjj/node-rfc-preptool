@@ -15,14 +15,10 @@ mixin rfc(e)
       - var val = $('front/seriesInfo[@name="RFC"]/@value')
       if !val
         +error('RFC number not found in front/seriesInfo', e)
-      - var children = e.childNodes()
-      if children.length === 0
-        +error('Not a convincing RFC', e)
-      - var l = $element('link')
-      - l.attr('rel', 'describedBy')
-      - l.attr('href', 'https://dx.doi.org/10.17487/rfc' + val)
-      - children[0].addPrevSibling(l)
-      
-  +elem(e)
+      +prepend_child(e, 'link')(rel='describedBy', href='https://dx.doi.org/10.17487/rfc' + val)
+    else
+      +elem(e)
+  else
+    +elem(e)
 
 +root

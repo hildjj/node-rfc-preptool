@@ -6,15 +6,11 @@ include ./elements.jade
 
 mixin rfc(e)
   if rfcMode
-    - var found = false
     if !$('link[@rel="item"][@href="urn:issn:2070-1721"]', e)
-      - var children = e.childNodes()
-      if children.length === 0
-        +error('Not a convincing RFC', e)
-      - var l = $element('link')
-      - l.attr('rel', 'item')
-      - l.attr('href', 'urn:issn:2070-1721')
-      - children[0].addPrevSibling(l)
-  +elem(e)
+      +prepend_child(e, 'link')(rel='item', href='urn:issn:2070-1721')
+    else
+      +elem(e)
+  else
+    +elem(e)
   
 +root

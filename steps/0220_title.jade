@@ -7,15 +7,10 @@ include ./elements.jade
 mixin title_to_name(e)
   - var title = e.attr('title')
   if title
-    - var nm = $element('name', title.value())
-    - var first = e.get('*')
-    if first
-      - first.addPrevSibling(nm)
-    else
-      - e.addChild(nm)
+    +prepend_child(e, 'name')= title.value()
     - title.remove()
-    
-  +elem(e)
+  else
+    +elem(e)
 
 mixin figure(e)
   +title_to_name(e)

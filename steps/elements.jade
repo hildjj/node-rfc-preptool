@@ -61,6 +61,12 @@ mixin elem(e)
     +children(e)
     block
 
+mixin prepend_child(e, nm)
+  #{$qname(e)}&attributes($nsDecls(e, $att(e)))
+    #{nm}&attributes(attributes)
+      block
+    +children(e)
+
 mixin root()
   doctype xml
   +nodes($$('/*/preceding::node()'))

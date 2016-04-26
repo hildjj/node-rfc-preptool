@@ -11,14 +11,10 @@ mixin note(e)
   if !rfcMode && ($att(e, 'removeInRFC') == 'true')
     - var t = $('t', e)
     if !t || (t.text().trim() != REMOVE)
-      - var rm = $element('t', REMOVE)
-      - var first = $('*', e)
-      if !first
-        - e.addChild(rm)
-      else if first.name() == 'name'
-        - first.addNextSibling(rm)
-      else
-        - first.addPrevSibling(rm)
-  +elem(e)
+      +prepend_child(e, 't')= REMOVE
+    else
+      +elem(e)
+  else
+    +elem(e)
   
 +root
