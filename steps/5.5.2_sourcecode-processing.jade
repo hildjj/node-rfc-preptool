@@ -1,0 +1,91 @@
+//- 1. If a <sourcecode> element has a “src” attribute where no scheme is
+//- specified, treat the scheme as “file:” in a path relative to the file being
+//- processed and replace the “src” attribute with a “file:” URI.
+
+//- 2. If a <sourcecode> element has a “src” attribute with a “file:” scheme,
+//- and if processing the URL would cause the processor to retrieve a file that
+//- is not in the same directory, or a subdirectory, as the file being
+//- processed, give an error. This rule attempts to prevent <sourcecode
+//- src=’file:///etc/passwd’> and similar security issues.
+
+//- 3. If a <sourcecode> element has a “src” attribute, and the element has
+//- content, give an error.
+
+//- 4. If a <sourcecode> element has a “src” attribute, the data needs to be
+//- moved into the content of the <sourcecode> element.
+//-   - If the “src” URI scheme is “data:”, fill the content of the <sourcecode>
+//-     element with the appropriately-escaped data and remove the “src”
+//-     attribute.
+//-   - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the
+//-     content of the <sourcecode> element with the appropriately-escaped
+//-     resolved text from the URI in the “src” attribute. If there is no
+//-     “originalSrc” attribute, add an “originalSrc” attribute with the value
+//-     of the URI and remove the “src” attribute.
+
+include ./elements.jade
+
+mixin sourcecode(e)
+  - var src = $att(e, 'src')
+  if src
+    - var suri = defs.url.parse(src)
+    if !suri.protocol
+      //- If a <sourcecode> element has a “src” attribute where no scheme is
+      //- specified, treat the scheme as “file:” in a path relative to the file
+      //- being processed and replace the “src” attribute with a “file:” URI.
+      if !$att(e, 'originalSrc')
+        - e.attr('originalSrc', src)
+      - suri = defs.state.inputUri.resolveObject(suri)
+      - e.attr('src', suri.format())
+      
+    //- If a <sourcecode> element has a “src” attribute with a “file:” scheme,
+    //- and if processing the URL would cause the processor to retrieve a file
+    //- that is not in the same directory, or a subdirectory, as the file being
+    //- processed, give an error. This rule attempts to prevent <sourcecode
+    //- src=’file:///etc/passwd’> and similar security issues.
+    if suri.protocol === 'file:'
+      //- make sure all of the ..'s and whatnot are taken care of
+      //- TODO: test other shellmetas, like backticks, dollar, etc.
+      - var p = defs.path.resolve(suri.pathname)
+      if !p.startsWith(defs.state.cwd + defs.path.sep)
+        +error('invalid file: path: ' + src, e)
+      if p !== suri.pathname
+        - suri.pathname = p
+        - e.attr('src', suri.format())
+        
+    //- If a <sourcecode> element has a “src” attribute, and the element has
+    //- content, give an error.
+    if e.children().length > 0
+      +error('Invalid sourcecode with both source and contents', e)
+      
+    //- If a <sourcecode> element has a “src” attribute, the data needs to be moved
+    //- into the content of the <sourcecode> element.
+    - var buf = null
+    if suri.protocol === 'data:'
+      //- - If the “src” URI scheme is “data:”, fill the content of the 
+      //-   <sourcecode> element with the appropriately-escaped data and remove
+      //-   the “src” attribute.
+      - buf = defs.dataUri.decode(src)
+    else
+      //- - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the
+      //-   content of the <sourcecode> element with the appropriately-escaped
+      //-   resolved text from the URI in the “src” attribute. If there is no
+      //-   “originalSrc” attribute, add an “originalSrc” attribute with the
+      //-   value of the URI and remove the “src” attribute.
+      if suri.protocol === 'file:'
+        - buf = defs.fs.readFileSync(suri.pathname)
+      else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
+        - var res = defs.urllibsync.request(src)
+        if res.status !== 200
+          +error('HTTP error (' + res.statusCode + '): ' + src, e)
+        - buf = res.data
+      else
+        +error('Unknown <sourcecode> src protocol: ' + suri.protocol, e)
+      if !$att(e, 'originalSrc')
+        - e.attr('originalSrc', src)
+    - e.text(buf.toString())
+    - e.attr('src').remove()
+    
+
+  +elem(e)
+  
++root
