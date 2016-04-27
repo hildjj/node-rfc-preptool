@@ -1,7 +1,7 @@
 - const number = defs.number
 - const path = defs.path
-- const pubDate = defs.state.pubDate
-- const rfcMode = defs.state.opts.id ? false : (defs.state.opts.rfc || !!$('front/seriesInfo[@name="RFC"]'))
+- const pubDate = defs && defs.state && defs.state.pubDate
+- const rfcMode = defs && defs.state && (defs.state.opts.id ? false : (defs.state.opts.rfc || !!$('front/seriesInfo[@name="RFC"]')))
 
 mixin warn(msg, n)
   - ln = ""
@@ -54,18 +54,18 @@ mixin nodes(list)
       default
         +warn("Undefined node type: " + c.type(), c)
 
-mixin elem(e)
+mixin start_elem(e)
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
   #{$qname(e)}&attributes(a)
-    +children(e)
     block
 
-mixin prepend_child(e, nm)
-  #{$qname(e)}&attributes($nsDecls(e, $att(e)))
-    #{nm}&attributes(attributes)
-      block
+mixin elem(e)
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+  +start_elem(e)&attributes(a)
     +children(e)
+    block
 
 mixin root()
   doctype xml

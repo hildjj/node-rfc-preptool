@@ -99,7 +99,7 @@ mixin artwork(e)
     //- attribute, the data needs to be moved into the content of the <artwork>
     //- element.
     - var typ = $att(e, 'type')
-    if  typ === 'svg'
+    if typ === 'svg'
       //-   - If the “src” URI scheme is “data:”, fill the content of the
       //-     <artwork> element with that data and remove the “src” attribute.
       - var buf = null
@@ -125,19 +125,19 @@ mixin artwork(e)
       - var doc = defs.xml.parseXml(buf)
       - e.addChild(doc.root())
       - e.attr('src').remove()
-      
-    //- 5. If an <artwork> element has type=’binary-art’, the data needs to be
-    //- in a “src” attribute with a URI scheme of “data:”. If the “src” URI
-    //- scheme is “file:”, “http:”, or “https:”, resolve the URL. Replace the
-    //- “src” attribute with a “data:” URI, and add an “originalSrc” attribute
-    //- with the value of the URI. For the “http:” and “https:” URI schemes, the
-    //- mediatype of the “data:” URI will be the Content-Type of the HTTP
-    //- response. For the “file:” URI scheme, the mediatype of the “data:” URI
-    //- needs to be guessed with heuristics (this is possibly a bad idea). This
-    //- also fails for content that includes binary images but uses a type other
-    //- than “binary-art”. Note: since this feature can’t be used for RFCs at
-    //- the moment, this entire feature might be de-prioritized.
+
     else if typ === 'binary-art'
+      //- 5. If an <artwork> element has type=’binary-art’, the data needs to be
+      //- in a “src” attribute with a URI scheme of “data:”. If the “src” URI
+      //- scheme is “file:”, “http:”, or “https:”, resolve the URL. Replace the
+      //- “src” attribute with a “data:” URI, and add an “originalSrc” attribute
+      //- with the value of the URI. For the “http:” and “https:” URI schemes,
+      //- the mediatype of the “data:” URI will be the Content-Type of the HTTP
+      //- response. For the “file:” URI scheme, the mediatype of the “data:” URI
+      //- needs to be guessed with heuristics (this is possibly a bad idea).
+      //- This also fails for content that includes binary images but uses a
+      //- type other than “binary-art”. Note: since this feature can’t be used
+      //- for RFCs at the moment, this entire feature might be de-prioritized.
       if suri.protocol !== 'data:'
         - var buf = null
         - var media = null
@@ -156,13 +156,14 @@ mixin artwork(e)
         - e.attr('src', defs.dataUri.encode(buf, media))
         if !$att(e, 'originalSrc')
           - e.attr('originalSrc', src)
-
-    //- 6. If an <artwork> element does not have type=’svg’ or type=’binary-art’
-    //- and there is a “src” attribute, the data needs to be moved into the
-    //- content of the <artwork> element. Note that this step assumes that all
-    //- of the preferred types other than “binary-art” are text, which is
-    //- possibly wrong.
+    
     else
+      //- 6. If an <artwork> element does not have type=’svg’ or
+      //- type=’binary-art’ and there is a “src” attribute, the data needs to be
+      //- moved into the content of the <artwork> element. Note that this step
+      //- assumes that all of the preferred types other than “binary-art” are
+      //- text, which is possibly wrong.
+      
       //- - If the “src” URI scheme is “data:”, fill the content of the
       //-   <artwork> element with the correctly-escaped form of that data and
       //-   remove the  “src” attribute.

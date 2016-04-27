@@ -7,8 +7,10 @@ include ./elements.jade
 mixin title_to_name(e)
   - var title = e.attr('title')
   if title
-    +prepend_child(e, 'name')= title.value()
     - title.remove()
+    +start_elem(e)
+      name= title.value()
+      +children(e)
   else
     +elem(e)
 

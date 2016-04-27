@@ -8,13 +8,12 @@ include ./elements.jade
 - var REMOVE = 'This note is to be removed before publishing as an RFC.'
 
 mixin note(e)
-  if !rfcMode && ($att(e, 'removeInRFC') == 'true')
-    - var t = $('t', e)
-    if !t || (t.text().trim() != REMOVE)
-      +prepend_child(e, 't')= REMOVE
-    else
-      +elem(e)
-  else
-    +elem(e)
+  +start_elem(e)
+    if !rfcMode && ($att(e, 'removeInRFC') == 'true')
+      - var t = $('t', e)
+      if !t || (t.text().trim() != REMOVE)
+        t= REMOVE
+      
+    +children(e)
   
 +root
