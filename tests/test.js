@@ -11,26 +11,29 @@ fs.readdirAsync(__dirname)
 .then((dir) => {
   dir.sort();
   return bb.mapSeries(dir, (test) => {
-    const m = test.match(/^0*(\d+)_(id|rfc)(_fail)?.*\.xml$/i);
+    const m = test.match(/^([^0_]+)(_id|_rfc)?(_fail)?.*\.xml$/i);
     if (m) {
-      var ret = new State({
-        step:   [parseInt(m[1]) / 10, 53],
+      var st = new State({
+        step:   [m[1], 'pretty'],
         input:  path.join(__dirname, test),
         output: path.join(__dirname, "out", test),
-        rfc:    m[2] === 'rfc',
-        id:     m[2] === 'id'
-      })
-      .run();
+        rfc:    m[2] === '_rfc',
+        id:     m[2] === '_id',
+        verbose: true
+      });
+      console.log('----', m[1], m[2] ? m[2] : "''", m[3] ? m[3] : "''");
+      var ret = st.run();
       if (m[3]) {
         ret = ret.then(_ => {
           var er = new Error('Expected error, but got success');
           er.test = test;
           throw er;
-        }, _ => {
+        }, e => {
           // expected.
+          return fs.writeFileAsync(st.opts.output, e.msg);
         })
       } else {
-        ret.catch(er => {
+        ret = ret.catch(er => {
           er.test = test;
           throw er;
         })

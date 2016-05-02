@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude">
+  <source xml:base="parts/frag.xml"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+    &lt;svg height="100" width="100"
+    xmlns="http://www.w3.org/2000/svg"&gt; &lt;circle cx="50" cy="50"
+    fill="white" r="40" stroke="black" stroke-width="4"/&gt;
+    &lt;/svg&gt;
+  </source>
+</rfc>

@@ -1,7 +1,7 @@
 <rfc>
   <front>
     <title>None</title>
-    <author>
+    <author fullname="fullname" asciiFullname="fullname">
       <address>
         <email ascii='foo@example.com'>foo@example.com</email>
         <email ascii='foot@example.com'>foo@example.com</email>

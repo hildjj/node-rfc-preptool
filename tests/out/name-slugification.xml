@@ -3,29 +3,29 @@
   <front>
     <title>None</title>
     <author asciiFullname="fullname" fullname="fullname"/>
-    <note title="Blah">
-      <name>Blah</name>
+    <note>
+      <name slugifiedName="n-blah">Blah</name>
       <t>bene</t>
     </note>
   </front>
   <middle>
-    <section title="Foo">
-      <name>Foo</name>
+    <section>
+      <name slugifiedName="boon">Foo</name>
       <t>Some text</t>
-      <figure title="Fig">
-        <name>Fig</name>
+      <figure>
+        <name slugifiedName="n-fig">Fig</name>
         <artwork>
 Some art.
         </artwork>
       </figure>
     </section>
     <section>
-      <name>Boo</name>
+      <name slugifiedName="n-boo">Boo</name>
     </section>
   </middle>
   <back>
-    <references title="Bar">
-      <name>Bar</name>
+    <references>
+      <name slugifiedName="n-bar">Bar</name>
     </references>
   </back>
 </rfc>

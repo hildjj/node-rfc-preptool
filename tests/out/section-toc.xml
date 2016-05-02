@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<rfc tocDepth="2">
+  <front>
+    <boilerplate>
+      <section toc="exclude"/>
+      <section toc="exclude"/>
+      <section toc="exclude"/>
+    </boilerplate>
+  </front>
+  <middle>
+    <section toc="include">
+      <section toc="include">
+        <section toc="exclude"/>
+        <section toc="include"/>
+        <section toc="include">
+          <section toc="include"/>
+        </section>
+      </section>
+    </section>
+    <section toc="exclude">
+      <section toc="exclude"/>
+    </section>
+  </middle>
+</rfc>
