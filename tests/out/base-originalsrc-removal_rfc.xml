@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <rfc>
-  <link href="https://tools.ietf.org/html/draft-iab-xml2rfc-03"
-        rel="convertedFrom"/>
   <front>
     <title>None</title>
     <author/>
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <t>nope</t>
+      <sourcecode src="file:///Users/jhildebr/track/rfc-preptool/tests/circle.svg"
+                  type="svg"/>
     </section>
   </middle>
 </rfc>

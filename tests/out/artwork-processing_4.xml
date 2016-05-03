@@ -6,7 +6,7 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <artwork originalSrc="file:///Users/jhildebr/track/rfc-preptool/tests/circle.svg">&lt;svg height="100"
+      <artwork originalSrc="parts/circle.svg">&lt;svg height="100"
      width="100"
      xmlns="http://www.w3.org/2000/svg"&gt;
   &lt;circle cx="50"

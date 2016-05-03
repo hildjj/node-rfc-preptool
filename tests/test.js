@@ -11,7 +11,7 @@ fs.readdirAsync(__dirname)
 .then((dir) => {
   dir.sort();
   return bb.mapSeries(dir, (test) => {
-    const m = test.match(/^([^0_]+)(_id|_rfc)?(_fail)?.*\.xml$/i);
+    const m = test.match(/^([^0_]+)(_id|_rfc)?(_fail)?(_[0-9]+)?.*\.xml$/i);
     if (m) {
       var st = new State({
         step:   [m[1], 'pretty'],
@@ -30,7 +30,7 @@ fs.readdirAsync(__dirname)
           throw er;
         }, e => {
           // expected.
-          return fs.writeFileAsync(st.opts.output, e.msg);
+          return fs.writeFileAsync(st.opts.output, e.msg || e.message || e.toString());
         })
       } else {
         ret = ret.catch(er => {

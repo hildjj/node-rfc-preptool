@@ -7,7 +7,9 @@
   <middle>
     <section anchor="s1" pn="s-1">
       <t pn="s-1-1">
-        <relref section="1" target="mustard"/>
+        <relref derivedLink="https://tools.ietf.org/html/rfc2119#section-1"
+                section="1"
+                target="mustard"/>
       </t>
     </section>
   </middle>

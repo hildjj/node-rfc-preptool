@@ -54,9 +54,8 @@ mixin sourcecode(e)
         
     //- If a <sourcecode> element has a “src” attribute, and the element has
     //- content, give an error.
-    if e.children().length > 0
+    if e.childNodes().length > 0
       +error('Invalid sourcecode with both source and contents', e)
-      
     //- If a <sourcecode> element has a “src” attribute, the data needs to be moved
     //- into the content of the <sourcecode> element.
     - var buf = null

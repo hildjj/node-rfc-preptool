@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <rfc>
   <front>
     <title>None</title>
@@ -6,8 +5,8 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <artwork originalSrc="frag.xml"
-               src="file:///Users/jhildebr/track/rfc-preptool/tests/frag.xml"/>
+      <sourcecode src='parts/frag.xml'/>
+      <sourcecode originalSrc='f.xml' src='parts/frag.xml'/>
     </section>
   </middle>
 </rfc>

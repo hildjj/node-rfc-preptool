@@ -6,7 +6,7 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <artwork originalSrc="circle.svg" type="svg">
+      <artwork originalSrc="parts/circle.svg" type="svg">
         <svg height="100"
              width="100"
              xmlns="http://www.w3.org/2000/svg">

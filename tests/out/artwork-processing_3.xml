@@ -6,7 +6,7 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <artwork originalSrc="circle.svg"
+      <artwork originalSrc="parts/circle.svg"
                src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ3aGl0ZSIKICAgICAgICAgIHI9IjQwIgogICAgICAgICAgc3Ryb2tlPSJibGFjayIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K"
                type="binary-art"/>
     </section>

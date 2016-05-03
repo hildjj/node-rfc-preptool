@@ -37,11 +37,11 @@ mixin relref(e)
     dl = ref_target + relative
   else
     //- TODO: fix URLs, figure out I-Ds
-    - var num = $('seriesInfo[@name="RFC"]/@value', target_el)
+    - var num = $('seriesInfo[@name="RFC"]/@value', reference)
     if num
       - dl = `https://tools.ietf.org/html/rfc${num}#section-${section}`
     else
-      - num = $('seriesInfo[@name="Internet-Draft"]/@value', target_el)
+      - num = $('seriesInfo[@name="Internet-Draft"]/@value', reference)
       if !num
         +error("relative is required for <relref>s not pointing at RFCs or I-Ds", e)
       - dl = `https://tools.ietf.org/html/${num}#section-${section}`

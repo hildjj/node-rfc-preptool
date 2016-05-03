@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<rfc>
+  <front>
+    <title>None</title>
+    <author/>
+  </front>
+  <middle>
+    <section anchor="s1" pn="s-1">
+      <sourcecode originalSrc="parts/frag.xml">&lt;?xml version='1.0'?&gt;
+&lt;source xmlns:xi="http://www.w3.org/2001/XInclude"&gt;
+&lt;xi:include href='circle.svg' parse='text'/&gt;
+&lt;/source&gt;
+</sourcecode>
+    </section>
+  </middle>
+</rfc>

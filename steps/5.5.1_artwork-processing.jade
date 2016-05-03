@@ -92,7 +92,7 @@ mixin artwork(e)
 
     //- 3. If an <artwork> element has a “src” attribute, and the element has
     //- content, give an error.
-    if e.children().length > 0
+    if e.childNodes().length > 0
       +error('Invalid artwork with both source and contents', e)
       
     //- 4. If an <artwork> element has type=’svg’ and there is a “src”
@@ -156,14 +156,12 @@ mixin artwork(e)
         - e.attr('src', defs.dataUri.encode(buf, media))
         if !$att(e, 'originalSrc')
           - e.attr('originalSrc', src)
-    
     else
       //- 6. If an <artwork> element does not have type=’svg’ or
       //- type=’binary-art’ and there is a “src” attribute, the data needs to be
       //- moved into the content of the <artwork> element. Note that this step
       //- assumes that all of the preferred types other than “binary-art” are
       //- text, which is possibly wrong.
-      
       //- - If the “src” URI scheme is “data:”, fill the content of the
       //-   <artwork> element with the correctly-escaped form of that data and
       //-   remove the  “src” attribute.

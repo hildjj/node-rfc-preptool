@@ -5,8 +5,7 @@
   </front>
   <middle>
     <section anchor="s1" pn="s-1">
-      <artwork originalSrc="circle.svg" type="binary-art"
-               src="file:///Users/jhildebr/track/rfc-preptool/tests/circle.svg"/>
+      <sourcecode src="parts/frag.xml"/>
     </section>
   </middle>
 </rfc>
