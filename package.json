@@ -6,7 +6,10 @@
   "bin": {
     "rfc-preptool": "./bin/rfc-preptool"
   },
-  "scripts": { "test": "node tests/test.js" },
+  "scripts": {
+    "test": "node tests/test.js",
+    "clean": "rm -rf tests/out/*.xml"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hildjj/node-rfc-preptool.git"
