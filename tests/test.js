@@ -21,7 +21,7 @@ fs.readdirAsync(__dirname)
         id:     m[2] === '_id',
         verbose: true
       });
-      console.log('----', m[1], m[2] ? m[2] : "''", m[3] ? m[3] : "''");
+      console.log('----', m[1], m[2] ? m[2] : "''", m[3] ? m[3] : "''", m[4]);
       var ret = st.run();
       if (m[3]) {
         ret = ret.then(_ => {

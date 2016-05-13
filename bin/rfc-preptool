@@ -30,6 +30,11 @@ if (!program.input) {
 
 var state = new State(program);
 state.run()
+.then((data) => {
+  if (!program.output) {
+    process.stdout.write(data);
+  }
+})
 .catch((er) => {
   console.error("Error:", er.message);
   process.exit(1);
