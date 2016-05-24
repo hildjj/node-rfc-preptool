@@ -37,7 +37,7 @@
     "slug": "0.9",
     "strong-data-uri": "1.0",
     "unicode-properties": "1.1",
-    "urllib-sync": "node-modules/urllib-sync",
+    "urllib-sync": "1.1",
     "xmljade": "*"
   }
 }
