@@ -9,7 +9,7 @@
       <t pn="s-1-1">
         <relref derivedLink="https://tools.ietf.org/html/rfc2119#section-1"
                 section="1"
-                target="mustard"/>
+                target="RFC2119"/>
       </t>
     </section>
   </middle>

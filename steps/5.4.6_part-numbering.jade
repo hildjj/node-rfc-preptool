@@ -17,10 +17,13 @@ mixin elem(e, pn)
     - e.attr('pn', pn)
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
-  
+
   #{$qname(e)}&attributes(a)
     +children(e)
     block
+
+mixin abstract(e)
+  +elem(e, 's-abstract')
 
 mixin figure(e)
   +elem(e, "f-" + number.sequentialNumber(e))
@@ -46,7 +49,7 @@ mixin section(e)
   else
     - e.attr('pn', 's-' + number.section(e))
   +elem(e, null)
-  
+
 mixin table(e)
   +elem(e, 't-' + number.sequentialNumber(e))
 

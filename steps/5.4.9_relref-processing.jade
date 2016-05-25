@@ -1,10 +1,6 @@
 //- If any <relref> element’s “target” attribute refers to anything but a
 //- <reference> element, give an error.
 
-//- For each <relref> element referring to a <reference> that has an associated
-//- <displayreference>, modify the “target” attribute of the <relref> to match
-//- the “to” attribute of the associated <displayreference>.
-
 //- For each <relref> element, fill in the “derivedLink” attribute.
 
 include ./elements.jade
@@ -19,13 +15,6 @@ mixin relref(e)
   - var tname = reference.name()
   if tname !== 'reference'
     +error('<relref> target must be <reference>, not: ' + tname, e)
-
-  - var dr = $('//displayreference[@target="' + target + '"]')
-  if dr
-    - var to = $att(dr, 'to')
-    if to
-      - target = to
-      - e.attr('target', to)
 
   - var dl = null
   - var section = $att(e, 'section')

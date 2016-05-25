@@ -21,9 +21,13 @@ mixin dl(e)
 mixin iref(e)
   - number.defaultAttr(e, 'primary', 'false')
   +elem(e)
-  
+
 mixin ol(e)
   - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin relref(e)
+  - number.defaultAttr(e, 'displayFormat', 'of')
   +elem(e)
 
 mixin reference(e)
@@ -61,8 +65,8 @@ mixin ul(e)
   - number.defaultAttr(e, 'spacing', 'normal')
   +elem(e)
 
-mixin xref(e)  
+mixin xref(e)
   - number.defaultAttr(e, 'format', 'default')
   +elem(e)
-  
+
 +root

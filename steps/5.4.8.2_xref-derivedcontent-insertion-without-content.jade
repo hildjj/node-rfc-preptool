@@ -1,17 +1,17 @@
 //- For each <xref> element that does not have content, fill the
 //- "derivedContent" based on the "format" attribute.
 //- * For format='counter', the "derivedContent" is the section, figure, table,
-//-   or ordered list number of the element with anchor equal to the xref 
+//-   or ordered list number of the element with anchor equal to the xref
 //-   target.
 //- * For format='default' and the "target" attribute points to a <reference> or
-//-   <referencegroup> element, the "derivedContent" is the value of the 
-//-   "target" attribute (or the "to" attribute of a <displayreference> element 
+//-   <referencegroup> element, the "derivedContent" is the value of the
+//-   "target" attribute (or the "to" attribute of a <displayreference> element
 //-   for the targeted <reference>).
 //- * For format='default' and the "target" attribute points something else, the
-//-   "derivedContent" is the title of the thing pointed to, such as "Section 
+//-   "derivedContent" is the title of the thing pointed to, such as "Section
 //-   2.3" or "Table 4".
 //- * For format='title', if the target is a <reference> element, the
-//-   "derivedContent" attribute is the name of the reference, extracted from 
+//-   "derivedContent" attribute is the name of the reference, extracted from
 //-   the <title> child of the <front> child of the reference.
 //- * For format='title', if the target element has a <name> child element, the
 //-   "derivedContent" attribute is the text content of that <name> element
@@ -33,7 +33,7 @@ mixin xref(e)
       +error('target required on <xref>', e)
     - var target_el = $('//*[@anchor="' + target + '"]')
     if !target_el
-      +error('<xref> target not found', e)
+      +error('<xref> target not found: "' + target + '"', e)
     - var tname = target_el.name()
     - var format = $att(e, 'format') || 'default'
     - var pn = $att(target_el, 'pn') || ''
@@ -50,14 +50,15 @@ mixin xref(e)
         if !dc
           +error('xref to li not in ol', e)
       else
-        +error('unkown xref target element type: ' + tname, e)
-      
+        +error(`unkown xref target element type: <${tname} target="${target}">`, e)
+
     else if format == 'default'
       //- For format=’default’ and the “target” attribute points to a
       //- <reference> or <referencegroup> element, the “derivedContent” is the
       //- value of the “target” attribute
       if (tname == 'reference') || (tname == 'referencegroup')
-        - dc = target
+        - var dr = $('//displayreference[@target="' + target + '"]/@to')
+        - dc = dr || target
       else if tname == 'section'
         //- For format='default' and the "target" attribute points to a
         //- <section>, <figure>, or <table>, the "derivedContent" is the title
@@ -70,7 +71,7 @@ mixin xref(e)
         - dc = 'Table ' + num
       else
         +error('unkown xref target element type: ' + tname, e)
-        
+
     else if format == 'title'
       //- For format=’title’, if the target is a <reference> element, the
       //- “derivedContent” attribute is the name of the reference, extracted
@@ -89,24 +90,24 @@ mixin xref(e)
         else
           //- For format=’title’, if the target element does not contain a
           //- <name> child element, the “derivedContent” attribute is the value
-          //- of the “target” attribute with no other adornment. 
+          //- of the “target” attribute with no other adornment.
           - dc = target
-          
+
     else if format == 'none'
       +error('<xref format="none"/> is deprecated', e)
     else
       +error('Invalid xref format type: ' + format, e)
-      
-    //- Issue a warning if the “derivedContent” attribute already exists and 
+
+    //- Issue a warning if the “derivedContent” attribute already exists and
     //- has a different value from what was being filled in.
     if !dc
       +error('Invalid state formatting <xref>', e)
-    
+
     - dc = dc.trim()
     - var old_dc = $att(e, 'derivedContent') || ''
     if old_dc && (old_dc !== dc)
         +warn('Overwriting invalid derivedContent: ' + old_dc, e)
     - e.attr('derivedContent', dc)
   +elem(e)
-  
+
 +root

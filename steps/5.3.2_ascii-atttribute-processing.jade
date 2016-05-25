@@ -6,7 +6,7 @@
 //- In every <author> element, if there is an “asciiFullname”, “asciiInitials”,
 //- or “asciiSurname” attribute, check the content of that element against its
 //- matching “fullname”, “initials”, or “surname” element (respectively). If the
-//- two are the same, remove the “ascii*” elelement and issue a warning about
+//- two are the same, remove the “ascii*” element and issue a warning about
 //- the removal.
 
 include ./elements.jade
@@ -41,7 +41,7 @@ mixin email(e)
 
 mixin organization(e)
   +rm_ascii(e)
-  
+
 mixin street(e)
   +rm_ascii(e)
 

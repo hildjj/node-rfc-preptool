@@ -1,9 +1,9 @@
-/Users/jhildebr/track/rfc-preptool/steps/5.5.1_artwork-processing.jade:179
-    177|         //-   attribute.
-    178|         if suri.protocol === 'file:'
-  > 179|           - buf = defs.fs.readFileSync(suri.pathname)
-    180|         else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
-    181|           - var res = defs.urllibsync.request(src)
-    182|           if res.status !== 200
+/Users/jhildebr/track/rfc-preptool/steps/5.5.1_artwork-processing.jade:180
+    178|         //-   attribute.
+    179|         if suri.protocol === 'file:'
+  > 180|           - buf = defs.fs.readFileSync(suri.pathname)
+    181|         else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
+    182|           - var res = defs.urllibsync.request(src)
+    183|           if res.status !== 200
 
 ENOENT: no such file or directory, open '/Users/jhildebr/track/rfc-preptool/tests/frag.xml'

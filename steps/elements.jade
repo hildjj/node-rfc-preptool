@@ -12,7 +12,7 @@ mixin warn(msg, n)
 mixin error(msg, n)
   - var er = new Error(msg);
   - er.msg = msg
-  if n 
+  if n
     - er.element = n
     if n.line
       - er.line = n.line()
@@ -27,7 +27,7 @@ mixin NODE_pi(c)
 
 mixin NODE_comment(c)
   != "<!--" + c.text() + "-->"
-  
+
 mixin nodes(list)
   each c in list
     case c.type()
@@ -54,6 +54,7 @@ mixin nodes(list)
       default
         +warn("Undefined node type: " + c.type(), c)
 
+//- TODO: test & fix escaping of attributes
 mixin start_elem(e)
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)

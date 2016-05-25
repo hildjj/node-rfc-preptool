@@ -1,5 +1,6 @@
-//- Ensure that the output has the “version” attribute of <rfc>, and that it is
-//- set to “3”.
+//- If the <rfc> element has a “version” attribute with a value other than “3”,
+//- give an error. If the <rfc> element has no “version” attribute, add one with
+//- the value “3”.
 
 include ./elements.jade
 
@@ -11,5 +12,5 @@ mixin rfc(e)
   else
     - e.attr('version', 3)
   +elem(e)
-  
+
 +root

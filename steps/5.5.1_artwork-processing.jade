@@ -22,7 +22,7 @@
 //-   - If the “src” URI scheme is “data:”, fill the content of the <artwork>
 //-     element with that data and remove the “src” attribute.
 //-   - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the
-//-     content of the <artwork> element with the resolved XML from the URI in 
+//-     content of the <artwork> element with the resolved XML from the URI in
 //-     the “src” attribute. If there is no “originalSrc” attribute, add an
 //-     “originalSrc” attribute with the value of the URI and remove the “src”
 //-     attribute.
@@ -44,7 +44,7 @@
 //- the <artwork> element. Note that this step assumes that all of the preferred
 //- types other than “binary-art” are text, which is possibly wrong.
 //-   - If the “src” URI scheme is “data:”, fill the content of the <artwork>
-//-     element with the correctly-escaped form of that data and remove the 
+//-     element with the correctly-escaped form of that data and remove the
 //-     “src” attribute.
 //-   - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the
 //-     content of the <artwork> element with the correctly-escaped form of the
@@ -69,7 +69,7 @@ mixin artwork(e)
         - e.attr('originalSrc', src)
       - suri = defs.state.inputUri.resolveObject(suri)
       - e.attr('src', suri.format())
-      
+
     //- 2. If an <artwork> element has a “src” attribute with a “file:”
     //- scheme, and if processing the URL would cause the processor to
     //- retrieve a file that is not in the same directory, or a subdirectory,
@@ -94,7 +94,7 @@ mixin artwork(e)
     //- content, give an error.
     if e.childNodes().length > 0
       +error('Invalid artwork with both source and contents', e)
-      
+
     //- 4. If an <artwork> element has type=’svg’ and there is a “src”
     //- attribute, the data needs to be moved into the content of the <artwork>
     //- element.
@@ -105,7 +105,7 @@ mixin artwork(e)
       - var buf = null
       if suri.protocol === 'data:'
         - buf = defs.dataUri.decode(src)
-      else 
+      else
         //- - If the “src” URI scheme is “file:”, “http:”, or “https:”, fill the
         //-   content of the <artwork> element with the resolved XML from the
         //-   URI  in the “src” attribute. If there is no “originalSrc”
@@ -114,6 +114,7 @@ mixin artwork(e)
         if suri.protocol === 'file:'
           - buf = defs.fs.readFileSync(suri.pathname)
         else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
+          - console.log('URL SYNC', src)
           - var res = defs.urllibsync.request(src)
           if res.status !== 200
             +error('HTTP error (' + res.statusCode + '): ' + src, e)
@@ -189,7 +190,7 @@ mixin artwork(e)
           - e.attr('originalSrc', src)
       - e.text(buf.toString())
       - e.attr('src').remove()
-    
+
   +elem(e)
-  
+
 +root

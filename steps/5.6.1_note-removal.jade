@@ -1,6 +1,5 @@
-//- If in RFC production mode, if there is a <note> element with a
-//- “removeInRFC” attribute that has the value “true”, remove the <note>
-//- element.
+//- If in RFC production mode, if there is a <note> or <section> element with a
+//- “removeInRFC” attribute that has the value “true”, remove the element.
 
 include ./elements.jade
 
@@ -8,5 +7,10 @@ mixin note(e)
   if !rfcMode || ($att(e, 'removeInRFC') != 'true')
     +elem(e)
   //- else remove
-  
+
+mixin section(e)
+  if !rfcMode || ($att(e, 'removeInRFC') != 'true')
+    +elem(e)
+  //- else remove
+
 +root
