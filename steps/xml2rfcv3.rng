@@ -1550,7 +1550,7 @@
     </element>
   </define>
   <!-- TODO: replace with link to RSE site, or provide an inline version -->
-  <include href="svg.rng"/>  
+  <include href="svg.rng"/>
   <define name="sourcecode">
     <element name="sourcecode">
       <optional>
@@ -1687,31 +1687,33 @@
       </optional>
       <choice>
         <oneOrMore>
-          <ref name="t"/>
+          <choice>
+            <ref name="artwork"/>
+            <ref name="dl"/>
+            <ref name="figure"/>
+            <ref name="ol"/>
+            <ref name="sourcecode"/>
+            <ref name="t"/>
+            <ref name="ul"/>
+          </choice>
         </oneOrMore>
-        <oneOrMore>
+        <zeroOrMore>
           <choice>
             <text/>
-            <ref name="artwork"/>
             <ref name="bcp14"/>
             <ref name="br"/>
             <ref name="cref"/>
-            <ref name="dl"/>
             <ref name="em"/>
             <ref name="eref"/>
-            <ref name="figure"/>
             <ref name="iref"/>
-            <ref name="ol"/>
             <ref name="relref"/>
-            <ref name="sourcecode"/>
             <ref name="strong"/>
             <ref name="sub"/>
             <ref name="sup"/>
             <ref name="tt"/>
-            <ref name="ul"/>
             <ref name="xref"/>
           </choice>
-        </oneOrMore>
+        </zeroOrMore>
       </choice>
     </element>
   </define>
@@ -1745,31 +1747,33 @@
       </optional>
       <choice>
         <oneOrMore>
-          <ref name="t"/>
+          <choice>
+            <ref name="artwork"/>
+            <ref name="dl"/>
+            <ref name="figure"/>
+            <ref name="ol"/>
+            <ref name="sourcecode"/>
+            <ref name="t"/>
+            <ref name="ul"/>
+          </choice>
         </oneOrMore>
-        <oneOrMore>
+        <zeroOrMore>
           <choice>
             <text/>
-            <ref name="artwork"/>
             <ref name="bcp14"/>
             <ref name="br"/>
             <ref name="cref"/>
-            <ref name="dl"/>
             <ref name="em"/>
             <ref name="eref"/>
-            <ref name="figure"/>
             <ref name="iref"/>
-            <ref name="ol"/>
             <ref name="relref"/>
-            <ref name="sourcecode"/>
             <ref name="strong"/>
             <ref name="sub"/>
             <ref name="sup"/>
             <ref name="tt"/>
-            <ref name="ul"/>
             <ref name="xref"/>
           </choice>
-        </oneOrMore>
+        </zeroOrMore>
       </choice>
     </element>
   </define>
@@ -2058,7 +2062,14 @@
         <attribute name="status"/>
       </optional>
       <optional>
-        <attribute name="stream"/>
+        <attribute name="stream" a:defaultValue="IETF">
+          <choice>
+            <value>IETF</value>
+            <value>IAB</value>
+            <value>IRTF</value>
+            <value>independent</value>
+          </choice>
+        </attribute>
       </optional>
       <empty/>
     </element>

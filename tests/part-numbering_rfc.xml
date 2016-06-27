@@ -7,6 +7,8 @@
       <name slugifiedName="n-NOT-blah">Blah</name>
       <t>bene</t>
     </note>
+    <abstract><t>This is the abstract.</t>
+    <t>This is concrete.</t></abstract>
   </front>
   <middle>
     <section>

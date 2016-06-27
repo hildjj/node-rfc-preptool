@@ -7,6 +7,10 @@
       <name slugifiedName="n-NOT-blah">Blah</name>
       <t pn="s-note-1.1">bene</t>
     </note>
+    <abstract pn="s-abstract">
+      <t pn="s-abstract-1">This is the abstract.</t>
+      <t pn="s-abstract-2">This is concrete.</t>
+    </abstract>
   </front>
   <middle>
     <section pn="s-1">
