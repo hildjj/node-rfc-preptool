@@ -83,7 +83,7 @@ mixin artwork(e)
     if suri.protocol === 'file:'
       //- make sure all of the ..'s and whatnot are taken care of
       //- TODO: test other shellmetas, like backticks, dollar, etc.
-      - var p = defs.path.resolve(suri.pathname)
+      - var p = defs.path.resolve(decodeURI(suri.pathname))
       if !p.startsWith(defs.state.cwd + defs.path.sep)
         +error('invalid file: path: ' + src, e)
       if p !== suri.pathname
@@ -114,7 +114,6 @@ mixin artwork(e)
         if suri.protocol === 'file:'
           - buf = defs.fs.readFileSync(suri.pathname)
         else if (suri.protocol === 'http:') || (suri.protocol === 'https:')
-          - console.log('URL SYNC', src)
           - var res = defs.urllibsync.request(src)
           if res.status !== 200
             +error('HTTP error (' + res.statusCode + '): ' + src, e)

@@ -36,7 +36,7 @@ mixin sourcecode(e)
         - e.attr('originalSrc', src)
       - suri = defs.state.inputUri.resolveObject(suri)
       - e.attr('src', suri.format())
-      
+
     //- If a <sourcecode> element has a “src” attribute with a “file:” scheme,
     //- and if processing the URL would cause the processor to retrieve a file
     //- that is not in the same directory, or a subdirectory, as the file being
@@ -45,13 +45,13 @@ mixin sourcecode(e)
     if suri.protocol === 'file:'
       //- make sure all of the ..'s and whatnot are taken care of
       //- TODO: test other shellmetas, like backticks, dollar, etc.
-      - var p = defs.path.resolve(suri.pathname)
+      - var p = defs.path.resolve(decodeURI(suri.pathname))
       if !p.startsWith(defs.state.cwd + defs.path.sep)
         +error('invalid file: path: ' + src, e)
       if p !== suri.pathname
         - suri.pathname = p
         - e.attr('src', suri.format())
-        
+
     //- If a <sourcecode> element has a “src” attribute, and the element has
     //- content, give an error.
     if e.childNodes().length > 0
@@ -60,7 +60,7 @@ mixin sourcecode(e)
     //- into the content of the <sourcecode> element.
     - var buf = null
     if suri.protocol === 'data:'
-      //- - If the “src” URI scheme is “data:”, fill the content of the 
+      //- - If the “src” URI scheme is “data:”, fill the content of the
       //-   <sourcecode> element with the appropriately-escaped data and remove
       //-   the “src” attribute.
       - buf = defs.dataUri.decode(src)
@@ -83,8 +83,8 @@ mixin sourcecode(e)
         - e.attr('originalSrc', src)
     - e.text(buf.toString())
     - e.attr('src').remove()
-    
+
 
   +elem(e)
-  
+
 +root
