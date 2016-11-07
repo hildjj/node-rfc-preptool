@@ -1,10 +1,10 @@
 //- If the <front> element in the <rfc> element does not contain a <date>,
-//- element, or if the year, month, and date attributes are not all present, 
+//- element, or if the year, month, and date attributes are not all present,
 //- add (or modify) a <date> element using the current year, month, and day.
 //- If the <date> element is present, but the date is more than three days ago
 //- (in Internet-Draft mode), warn.
 
-include ./elements.jade
+include ./elements.pug
 - require('datejs')
 
 mixin front(e)
@@ -30,7 +30,7 @@ mixin front(e)
       - date.attr('year',  pubDate.getFullYear())
       - date.attr('month', pubDate.getMonth()+1)
       - date.attr('day',   pubDate.getDate())
-    
+
   +elem(e)
-  
+
 +root

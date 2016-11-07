@@ -41,7 +41,7 @@ mixin nodes(list)
         +NODE_comment(c)
       when 'element'
         - var nm = c.name()
-        if jade_mixins[nm] != null
+        if pug_mixins[nm] != null
           +#{nm}(c)
         else
           +elem(c, opts)

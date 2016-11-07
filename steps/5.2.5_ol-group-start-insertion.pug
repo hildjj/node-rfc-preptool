@@ -1,7 +1,7 @@
 //- Add a “start” attribute to every <ol> element containing a group that
 //- does not already have a start.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin ol(e)
   if !$att(e, 'start')
@@ -16,5 +16,5 @@ mixin ol(e)
     else
       - e.attr('start', '1')
   +elem(e)
-  
+
 +root

@@ -2,7 +2,7 @@
 //- remove the “title” attribute and insert a <name> element in that section
 //- with the title from the attribute.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin title_to_name(e)
   - var title = e.attr('title')
@@ -28,5 +28,5 @@ mixin section(e)
 
 mixin texttable(e)
   +title_to_name(e)
-  
+
 +root

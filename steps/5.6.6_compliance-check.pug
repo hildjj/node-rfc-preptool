@@ -2,7 +2,7 @@
 //- v3 schema, without any deprecated elements or attributes, and give an error
 //- if any issues are found.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin deprecate_elem(e)
   if rfcMode
@@ -15,11 +15,11 @@ mixin deprecate_attr(e, a)
     - var val = $att(e, a)
     if val
       +error(e.name() + '/@' + a + ' is deprecated in v3', e)
-      
+
 //- Deprecate <list> in favor of <dl>, <ul>, and <ol>.
 mixin list(e)
   +deprecate_elem(e)
-  
+
 //- Deprecate <spanx>; replace it with <strong>, <em>, and <tt>.
 mixin spanx(e)
   +deprecate_elem(e)
@@ -58,7 +58,7 @@ mixin preamble(e)
 
 mixin postamble(e)
   +deprecate_elem(e)
-  
+
 mixin figure(e)
   +deprecate_attr(e, 'align')
   //- Deprecate the "alt", and "src" attributes in <figure> because they overlap
@@ -99,7 +99,7 @@ mixin artwork(e)
   if rfcMode && e.get('@xml:space')
     +error('artwork/@xml:space is deprecated in v3', e)
   +elem(e)
-  
+
 //- Deprecate the "pageno" attribute in <xref> because it was unused in v2.
 //- Deprecate the "none" values for the "format" attribute in <xref> because it
 //- makes no sense semantically.

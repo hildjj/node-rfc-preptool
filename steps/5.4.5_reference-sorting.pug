@@ -3,7 +3,7 @@
 //- attribute, as modified by the “to” attribute of any <displayreference>
 //- element.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin references(e)
   //- 'false' is the default
@@ -18,6 +18,6 @@ mixin references(e)
         +elem(nm)
       - var rs = e.find('reference|referencegroup')
       - rs.sort(number.cmpAnchor)
-      +nodes(rs)  
+      +nodes(rs)
 
 +root

@@ -1,10 +1,10 @@
-//- In every <iref> element create a document-unique pn attribute.  The 
-//- pn will start with 'i-', and use the item attribute, the subitem 
+//- In every <iref> element create a document-unique pn attribute.  The
+//- pn will start with 'i-', and use the item attribute, the subitem
 //- attribute (if it exists), and a counter to ensure unqiqueness.  For example,
 //- the first instance of <iref item='foo' subitem='bar'> will get the irefid
 //- of 'i-foo-bar-1'.
 
-include ./elements.jade
+include ./elements.pug
 
 - var irefs = {}
 
@@ -16,5 +16,5 @@ mixin iref(e)
   - irefs[isi] = num
   - e.attr('pn',isi+'-'+num)
   +elem(e)
-  
+
 +root

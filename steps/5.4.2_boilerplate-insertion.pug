@@ -4,13 +4,13 @@
 //- tool, will treat this condition as an error” and remove the existing
 //- children.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin boilerplate(e)
   if e.find('*').length > 0
     +warn('Existing boilerplate being removed.  Other tools, specifically the draft submission tool, will treat this condition as an error', e)
   boilerplate
-    
+
 mixin front(e)
   +elem(e)
     if (e.parent().name() == 'rfc') && !e.get('boilerplate')

@@ -1,15 +1,15 @@
-//- for each section, modify the "toc" attribute to be either "include" or 
+//- for each section, modify the "toc" attribute to be either "include" or
 //- "exclude"
 //-   for sections that have an ancestor of <boilerplate>, use "exclude"
-//-   else for sections that have a descendant that has toc="include", use 
-//-        "include".  If the section has toc="exclude" in the input, this is 
+//-   else for sections that have a descendant that has toc="include", use
+//-        "include".  If the section has toc="exclude" in the input, this is
 //-        an error.
-//-   else for sections that are children of a section with toc="exclude", 
+//-   else for sections that are children of a section with toc="exclude",
 //-        use "exclude".
 //-   else for sections that are deeper than rfc/@tocDepth, use "exclude"
 //-   else use "include"
 
-include ./elements.jade
+include ./elements.pug
 
 mixin section(e)
   - var toc = 'include';

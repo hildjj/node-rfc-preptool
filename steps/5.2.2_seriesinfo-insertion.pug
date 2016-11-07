@@ -5,7 +5,7 @@
 //- path or file extension removed. If the filename cannot be determined, give
 //- an error.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin front(e)
   +elem(e)
@@ -14,5 +14,5 @@ mixin front(e)
       //- TODO: insert in the correct order.
       - var nm = path.parse(defs.state.input).name
       seriesInfo(name='Internet-Draft', value=nm)
-  
+
 +root

@@ -9,7 +9,7 @@
 //- <artwork>, <aside>, <blockquote>, <dl>, <dt>, <li>, <ol>,
 //-   <sourcecode>, <t>, <ul>: pn=’p-[section]-[counter]’
 
-include ./elements.jade
+include ./elements.pug
 
 mixin elem(e, pn)
   - pn = pn || number.partNumber(e)

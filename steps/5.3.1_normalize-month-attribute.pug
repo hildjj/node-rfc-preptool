@@ -1,7 +1,7 @@
 //- Normalize the values of “month” attributes in all <date> elements to
 //- numeric values.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin date(e)
   if !$('ancestor::reference', e)
@@ -11,5 +11,5 @@ mixin date(e)
       if n >= 0
         - e.attr('month', n+1)
   +elem(e)
-  
+
 +root

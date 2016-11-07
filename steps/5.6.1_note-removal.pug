@@ -1,7 +1,7 @@
 //- If in RFC production mode, if there is a <note> or <section> element with a
 //- “removeInRFC” attribute that has the value “true”, remove the element.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin note(e)
   if !rfcMode || ($att(e, 'removeInRFC') != 'true')

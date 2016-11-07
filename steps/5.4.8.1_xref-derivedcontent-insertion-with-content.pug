@@ -3,7 +3,7 @@
 //- content text. Issue a warning if the “derivedContent” attribute already
 //- exists and has a different value from what was being filled in.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin xref(e)
   - var t = e.text().trim()
@@ -13,5 +13,5 @@ mixin xref(e)
       +warn('Invalid derivedContent being overwritten: ' + dc, e)
     - e.attr('derivedContent', t)
   +elem(e)
-  
+
 +root

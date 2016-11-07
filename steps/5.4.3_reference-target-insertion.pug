@@ -6,7 +6,7 @@
 //- Editor and the IESG. These URLs might also be different before and after the
 //- v3 format is adopted.
 
-include ./elements.jade
+include ./elements.pug
 
 mixin reference(e)
   if !$att(e, 'target')
@@ -23,5 +23,5 @@ mixin reference(e)
           - e.attr('target', 'http://doi.org/' + val)
       //- TODO: generate URIs for W3C, etc. here.
   +elem(e)
-  
+
 +root
