@@ -1,0 +1,10 @@
+//- If in RFC production mode, remove XML comments.
+
+include ./elements.pug
+
+mixin NODE_comment(c)
+  if !rfcMode
+    != "<!--" + c.text() + "-->"
+  //- else remove
+
++root

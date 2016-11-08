@@ -1,0 +1,56 @@
+//- Add “pn” attributes for all parts. Parts are:
+//- <section> in <middle>: pn=’s-1.4.2’
+//- <references>: pn=’s-12’ or pn=’s-12.1’
+//- <abstract>: pn=’s-abstract’
+//- <note>: pn=’s-note-2’
+//- <section> in <boilerplate>: pn=’s-boilerplate-1’
+//- <table>: pn=’t-3’
+//- <figure>: pn=’f-4’
+//- <artwork>, <aside>, <blockquote>, <dl>, <dt>, <li>, <ol>,
+//-   <sourcecode>, <t>, <ul>: pn=’p-[section]-[counter]’
+
+include ./elements.pug
+
+mixin elem(e, pn)
+  - pn = pn || number.partNumber(e)
+  if pn
+    - e.attr('pn', pn)
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+
+  #{$qname(e)}&attributes(a)
+    +children(e)
+    block
+
+mixin abstract(e)
+  +elem(e, 's-abstract')
+
+mixin figure(e)
+  +elem(e, "f-" + number.sequentialNumber(e))
+
+mixin note(e)
+  +elem(e, "s-note-" + number.sequentialNumber(e))
+
+mixin references(e)
+  - var first_section = $('count(/rfc/middle/section)') + 1
+  - var sn = null
+  if $('count(/rfc/back/references)') === 1
+    //- if there's only one reference, next section after last in middle.
+    - sn = first_section
+  else
+    //- if there's more than one, there's a phantom section as the parent.
+    - var prev = $('count(preceding::references)', e) + 1;
+    - sn = first_section + '.' + prev
+  +elem(e, "s-" + sn)
+
+mixin section(e)
+  if $('ancestor::back', e)
+    - e.attr('pn', 's-' + number.appendix(e))
+  else
+    - e.attr('pn', 's-' + number.section(e))
+  +elem(e, null)
+
+mixin table(e)
+  +elem(e, 't-' + number.sequentialNumber(e))
+
++root

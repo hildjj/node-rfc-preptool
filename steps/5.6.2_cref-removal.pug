@@ -1,0 +1,10 @@
+//- If in RFC production mode, remove all <cref> elements.
+
+include ./elements.pug
+
+mixin cref(c)
+  if !rfcMode
+    +elem(c)
+  //- else remove
+
++root

@@ -1,0 +1,24 @@
+//- If in I-D mode, if there is a <note> or <section> element with a
+//- “removeInRFC” attribute that has the value “true”, add a paragraph to the top
+//- of the element with the text “This note is to be removed before publishing as
+//- an RFC.” unless a paragraph consisting of that exact text already exists.
+
+include ./elements.pug
+
+mixin remove_in_rfc(e)
+  +start_elem(e)
+    if !rfcMode && ($att(e, 'removeInRFC') == 'true')
+      - var t = $('t', e)
+      - var REMOVE = `This ${e.name()} is to be removed before publishing as an RFC.`
+      if !t || (t.text().trim().replace(/\s+/g, ' ') != REMOVE)
+        t= REMOVE
+
+    +children(e)
+
+mixin note(e)
+  +remove_in_rfc(e)
+
+mixin section(e)
+  +remove_in_rfc(e)
+
++root

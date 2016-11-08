@@ -1,0 +1,23 @@
+//- If the “sortRefs” attribute of the <rfc> element is true, sort the
+//- <reference>s and <referencegroup>s lexically by the value of the “anchor”
+//- attribute, as modified by the “to” attribute of any <displayreference>
+//- element.
+
+include ./elements.pug
+
+mixin references(e)
+  //- 'false' is the default
+  if $att($root(), 'sortRefs') !== 'true'
+    +elem(e)
+  else
+    - var a = $att(e)
+    - a = $nsDecls(e, a)
+    references&attributes(a)
+      - var nm = $('name', e)
+      if nm
+        +elem(nm)
+      - var rs = e.find('reference|referencegroup')
+      - rs.sort(number.cmpAnchor)
+      +nodes(rs)
+
++root
